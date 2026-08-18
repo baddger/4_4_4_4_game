@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://ceyxli06ulbfb"]
+
+[ext_resource type="Texture2D" uid="uid://i5edku1xa77c" path="res://cible.png" id="1_a202f"]
+[ext_resource type="Script" uid="uid://d3i61qixjh2fm" path="res://player.gd" id="2_a0tk4"]
+[ext_resource type="Script" uid="uid://vclctq1eg1rc" path="res://camera_zqsd_and_mouse.gd" id="2_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvqyy"]
+albedo_texture = ExtResource("1_a202f")
+uv1_scale = Vector3(15, 10.004, 4.996)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1sea3"]
+material = SubResource("StandardMaterial3D_uvqyy")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1sea3"]
+
+[sub_resource type="Environment" id="Environment_1sea3"]
+
+[node name="Node3D" type="Node3D" unique_id=1254261534]
+
+[node name="platform" type="MeshInstance3D" parent="." unique_id=1539844984]
+mesh = SubResource("BoxMesh_1sea3")
+
+[node name="player" type="MeshInstance3D" parent="." unique_id=1872865603]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863, 0)
+mesh = SubResource("SphereMesh_1sea3")
+script = ExtResource("2_a0tk4")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2141865021]
+transform = Transform3D(-0.988224, 0.10309079, -0.11307308, 0, 0.73897296, 0.6737351, 0.15301383, 0.6658012, -0.73027086, 0, 6.013335, -8.275305)
+script = ExtResource("2_noarx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=398273361]
+environment = SubResource("Environment_1sea3")
