@@ -28,7 +28,7 @@ const INPUT_TO_DIRECTION := {
 }
 
 var _direction := Direction.NONE
-var _start_rotation := 0.0
+var _rotation_step := 0.0
 var _frame := 0
 
 func _physics_process(_delta: float) -> void:
@@ -41,12 +41,12 @@ func _read_input() -> void:
 	for action in INPUT_TO_DIRECTION:
 		if Input.is_action_just_pressed(action):
 			_direction = INPUT_TO_DIRECTION[action]
-			_start_rotation = rotation.y
+			var delta_angle := wrapf(DIRECTION_ROTATIONS[_direction] - rotation.y, -PI, PI)
+			_rotation_step = delta_angle / MOVE_FRAMES
 			return
 
 func _move_step() -> void:
-	var step = abs(_start_rotation - DIRECTION_ROTATIONS[_direction]) / MOVE_FRAMES
-	rotation.y = fmod(rotation.y + step, TAU)
+	rotation.y = wrapf(rotation.y + _rotation_step, 0.0, TAU)
 
 	position += DIRECTION_VECTORS[_direction] * DIST_PER_FRAME
 	position = position.snapped(Vector3.ONE * 0.001)
