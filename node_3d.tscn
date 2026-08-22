@@ -12,9 +12,23 @@ uv1_scale = Vector3(15, 10.004, 4.996)
 material = SubResource("StandardMaterial3D_uvqyy")
 size = Vector3(10, 1, 10)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+albedo_color = Color(0.25184923, 0.44891757, 0, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_1sea3"]
+material = SubResource("StandardMaterial3D_a0tk4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0.6346316, 0.22998995, 0.23810712, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jka67"]
+material = SubResource("StandardMaterial3D_r3fl7")
 
 [sub_resource type="Environment" id="Environment_1sea3"]
+background_mode = 1
+background_color = Color(0, 0, 0.49411765, 1)
+ambient_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
 
 [node name="Node3D" type="Node3D" unique_id=1254261534]
 
@@ -22,15 +36,46 @@ size = Vector3(10, 1, 10)
 mesh = SubResource("BoxMesh_1sea3")
 
 [node name="player" type="MeshInstance3D" parent="." unique_id=1872865603]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.863, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.863, 0.5)
 mesh = SubResource("SphereMesh_1sea3")
 script = ExtResource("2_a0tk4")
-move_speed = null
-physics_fps = null
+
+[node name="player2" type="MeshInstance3D" parent="player" unique_id=1353127096]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.2979477, 0.4897775, 0)
+mesh = SubResource("SphereMesh_1sea3")
+
+[node name="player3" type="MeshInstance3D" parent="player" unique_id=1358496771]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.27081084, 0.4897775, 0)
+mesh = SubResource("SphereMesh_1sea3")
+
+[node name="player4" type="MeshInstance3D" parent="player" unique_id=886547064]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.024903536, 0.1414178, -0.5014441)
+mesh = SubResource("SphereMesh_jka67")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=2141865021]
-transform = Transform3D(-0.988224, 0.10309079, -0.11307308, 0, 0.73897296, 0.6737351, 0.15301383, 0.6658012, -0.73027086, 0, 6.013335, -8.275305)
+transform = Transform3D(-1, 8.742278e-08, 1.3873786e-16, 2.9776475e-08, 0.34060317, 0.9402072, 8.219552e-08, 0.9402072, -0.34060317, 0, 7.7603645, -3.5740337)
+fov = 64.0
+size = 11.0
 script = ExtResource("2_noarx")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=398273361]
 environment = SubResource("Environment_1sea3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=192297380]
+transform = Transform3D(0.5983962, -0.6822582, -0.42005458, 0, -0.5242816, 0.851545, -0.80120033, -0.5095613, -0.31372806, -6.972893, 6.8206825, -2.7095547)
+light_energy = 8.0
+shadow_enabled = true
+shadow_bias = 0.538
+spot_range = 28.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=2023439048]
+transform = Transform3D(-0.65331495, -0.55666083, -0.5131359, -0.019111916, -0.66543496, 0.74621105, -0.7568449, 0.49731797, 0.4240996, -3.0685513, 6.8206825, 2.5337038)
+light_energy = 0.629
+shadow_enabled = true
+shadow_bias = 0.538
+spot_range = 28.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=416911837]
+transform = Transform3D(0.5983962, -0.6822582, -0.42005455, 0, -0.5242816, 0.851545, -0.80120033, -0.5095613, -0.3137281, -6.972893, 6.8206825, -2.7095547)
+visible = false
+shadow_enabled = true

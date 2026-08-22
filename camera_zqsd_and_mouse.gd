@@ -4,10 +4,12 @@ extends Camera3D
 @export var mouse_sensitivity : float = 0.002
 
 func _ready():
+	return
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
 	# Mouse look
+	return
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x * mouse_sensitivity
 		rotation.x -= event.relative.y * mouse_sensitivity
