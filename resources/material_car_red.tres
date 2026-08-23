@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://datpjnw5tdq0j"]
+
+[ext_resource type="Texture2D" uid="uid://dx5c6imhngeck" path="res://resources/paint_texture_baseColor.png" id="1_sbl4h"]
+
+[resource]
+resource_name = "paint_texture"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_sbl4h")
+metadata/_gltf_primary_texture_coord = 0

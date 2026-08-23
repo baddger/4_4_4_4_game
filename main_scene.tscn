@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://ceyxli06ulbfb"]
+
+[ext_resource type="Texture2D" uid="uid://i5edku1xa77c" path="res://resources/cible.png" id="1_a202f"]
+[ext_resource type="Script" uid="uid://d3i61qixjh2fm" path="res://player.gd" id="2_a0tk4"]
+[ext_resource type="Script" uid="uid://vclctq1eg1rc" path="res://camera_zqsd_and_mouse.gd" id="2_noarx"]
+[ext_resource type="PackedScene" uid="uid://dx2ojub4784ku" path="res://frog_plush/scene.gltf" id="4_r3fl7"]
+[ext_resource type="Script" uid="uid://vf6nfeax82ya" path="res://pipe.gd" id="7_jsk3o"]
+[ext_resource type="PackedScene" uid="uid://se4f6j0fr2fy" path="res://warp_pipe/scene.gltf" id="7_wc5p8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvqyy"]
+albedo_texture = ExtResource("1_a202f")
+uv1_scale = Vector3(15, 10.004, 4.996)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1sea3"]
+material = SubResource("StandardMaterial3D_uvqyy")
+size = Vector3(10, 1, 10)
+
+[sub_resource type="Environment" id="Environment_1sea3"]
+background_mode = 1
+background_color = Color(0, 0, 0.49411765, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.32
+
+[node name="Node3D" type="Node3D" unique_id=1254261534]
+
+[node name="platform" type="MeshInstance3D" parent="." unique_id=1539844984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -4.5)
+mesh = SubResource("BoxMesh_1sea3")
+
+[node name="platform2" type="MeshInstance3D" parent="." unique_id=1698862271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -14.5)
+mesh = SubResource("BoxMesh_1sea3")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2141865021]
+transform = Transform3D(1, 0, 0, 0, 0.49999994, 0.8660254, 0, -0.8660254, 0.49999994, -0.5, 10, 1)
+fov = 60.0
+size = 11.0
+script = ExtResource("2_noarx")
+
+[node name="player" type="Node3D" parent="." unique_id=593499058]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001619339)
+script = ExtResource("2_a0tk4")
+
+[node name="Sketchfab_Scene2" parent="player" unique_id=716058584 instance=ExtResource("4_r3fl7")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -0.017816424, 0.10284525)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=398273361]
+environment = SubResource("Environment_1sea3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=192297380]
+transform = Transform3D(0.5983962, -0.6822581, -0.42005455, 0, -0.52428156, 0.851545, -0.80120033, -0.50956124, -0.3137281, -6.972893, 8.87173, -2.7095547)
+light_energy = 8.0
+shadow_enabled = true
+shadow_bias = 0.538
+spot_range = 28.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=2023439048]
+transform = Transform3D(0.033314496, 0.7455092, 0.6656622, -0.019111935, -0.66543496, 0.7462112, 0.9992622, -0.03758174, -0.007920507, 6.4971056, 3.6930585, -0.27549458)
+light_energy = 0.629
+shadow_enabled = true
+shadow_bias = 0.538
+spot_range = 28.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=416911837]
+transform = Transform3D(0.5983962, -0.6822582, -0.42005455, 0, -0.5242816, 0.851545, -0.80120033, -0.5095613, -0.3137281, -6.972893, 6.8206825, -2.7095547)
+shadow_enabled = true
+
+[node name="pipe_red" type="Node3D" parent="." unique_id=483337384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+script = ExtResource("7_jsk3o")
+pipe_color = 1
+
+[node name="Sketchfab_Scene" parent="pipe_red" unique_id=1510400904 instance=ExtResource("7_wc5p8")]
+transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, -0.08463383, 0.49954867, -0.0395298)
+
+[node name="pipe_red2" type="Node3D" parent="." unique_id=1954954113]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5, 0, -4)
+script = ExtResource("7_jsk3o")
+pipe_color = 1
+
+[node name="Sketchfab_Scene" parent="pipe_red2" unique_id=749823573 instance=ExtResource("7_wc5p8")]
+transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, -0.08463383, 0.49954867, -0.0395298)
+
+[node name="pipe_red3" type="Node3D" parent="." unique_id=369207052]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -5)
+script = ExtResource("7_jsk3o")
+pipe_color = 1
+
+[node name="Sketchfab_Scene" parent="pipe_red3" unique_id=1268726685 instance=ExtResource("7_wc5p8")]
+transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, -0.08463383, 0.49954867, -0.0395298)
+
+[node name="pipe_blue" type="Node3D" parent="." unique_id=971158841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -9)
+script = ExtResource("7_jsk3o")
+
+[node name="Sketchfab_Scene" parent="pipe_blue" unique_id=1895917169 instance=ExtResource("7_wc5p8")]
+transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, -0.08463383, 0.49954867, -0.0395298)
