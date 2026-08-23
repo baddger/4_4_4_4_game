@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bu0mxcs1gf6bb"]
 
 [ext_resource type="Script" uid="uid://c6yswem5rnlxo" path="res://car.gd" id="1_uoj53"]
-[ext_resource type="Material" uid="uid://dimay8bf5n72h" path="res://material_car_blue.tres" id="2_uoj53"]
+[ext_resource type="Material" uid="uid://dimay8bf5n72h" path="res://resources/material_car_blue.tres" id="2_uoj53"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ibff"]
 resource_name = "outline"
@@ -321,7 +321,6 @@ shadow_mesh = SubResource("ArrayMesh_k61xc")
 
 [node name="car" type="Node3D" unique_id=2011869009]
 script = ExtResource("1_uoj53")
-pipe_color = null
 
 [node name="RootNode" type="Node3D" parent="." unique_id=526197074]
 transform = Transform3D(-0.0027658378, -9.273246e-26, -4.1762988e-10, 0, 0.0027658378, -6.1413937e-19, 4.1762988e-10, -6.1413937e-19, -0.0027658378, 0, 0, 0)

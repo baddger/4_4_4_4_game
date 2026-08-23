@@ -17,7 +17,6 @@ func _process(delta: float) -> void:
 
 	if _spawn_timer >= SPAWN_INTERVAL:
 		_spawn_timer = 0.0
-
 		var car_instance = CAR_SCENE.instantiate()
 		car_instance.pipe_color = pipe_color
 		add_child(car_instance)
