@@ -68,7 +68,8 @@ func _read_input() -> void:
 
 func _move_step() -> void:
 	# Check if any coordinate exceeds 100
-	if abs(position.x) > 10 or abs(position.y) > 100 or abs(position.z) > 100:
+	if abs(position.x) > 20 or abs(position.y) > 20 or abs(position.z) > 20:
+		print(position)
 		queue_free()
 		return
 
