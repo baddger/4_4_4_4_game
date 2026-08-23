@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bu0mxcs1gf6bb"]
+
+[ext_resource type="Script" uid="uid://c6yswem5rnlxo" path="res://car_blue.gd" id="1_uoj53"]
+[ext_resource type="PackedScene" uid="uid://b4uptr7t3rnym" path="res://cartoon_frog_blue/scene.gltf" id="3_k61xc"]
+
+[node name="car" type="Node3D" unique_id=2011869009]
+script = ExtResource("1_uoj53")
+
+[node name="mesh" parent="." unique_id=594949285 instance=ExtResource("3_k61xc")]
+transform = Transform3D(-0.8, 0, -1.2079664e-07, 0, 0.8, 0, 1.2079664e-07, 0, -0.8, 0, 0, 0)

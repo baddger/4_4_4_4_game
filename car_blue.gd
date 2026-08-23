@@ -1,17 +1,23 @@
 extends Node3D
 
 const move_distance := 1.0
-const move_frames := 10
+const move_frames := 30
 const dist_per_frame := move_distance / move_frames
 const jump_height := 1
 
-var _direction := Direction.NONE
+enum PipeColor { BLUE, RED }
+
+@export var pipe_color: PipeColor = PipeColor.BLUE
+
+var _direction := Direction.RIGHT
 var _frame := 0
 var _start_pos : Vector3
-var _direction_history: Array = [Direction.UP]
+var _direction_sequence: Array
+var _direction_history: Array
+
+var _sequence_index := 0
 
 enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
-
 
 const direction_vectors := {
 	Direction.UP: Vector3.FORWARD,
@@ -19,7 +25,6 @@ const direction_vectors := {
 	Direction.LEFT: Vector3.LEFT,
 	Direction.RIGHT: Vector3.RIGHT,
 }
-
 
 const direction_rotations := {
 	Direction.DOWN:  0,
@@ -36,15 +41,23 @@ const INPUT_TO_DIRECTION := {
 }
 
 func _ready() -> void:
+
+	if pipe_color == PipeColor.BLUE :
+		_direction_sequence = [Direction.RIGHT, Direction.RIGHT, Direction.UP, Direction.RIGHT, Direction.RIGHT, Direction.DOWN]
+	if pipe_color == PipeColor.RED :
+		_direction_sequence = [Direction.RIGHT, Direction.RIGHT]
+
+	_direction_history = [_direction_sequence[0]]
+
 	_start_pos = position
+	_direction = _direction_sequence[_sequence_index]
+	_direction_history.append(_direction)
+	_sequence_index += 1
 	rotation.y = direction_rotations[_direction_history[0]]
 
-
 func _physics_process(_delta: float) -> void:
-	if _direction == Direction.NONE:
-		_read_input()
-	else:
-		_move_step()
+
+	_move_step()
 
 func _read_input() -> void:
 	for action in INPUT_TO_DIRECTION:
@@ -54,6 +67,11 @@ func _read_input() -> void:
 			return
 
 func _move_step() -> void:
+	# Check if any coordinate exceeds 100
+	if abs(position.x) > 10 or abs(position.y) > 100 or abs(position.z) > 100:
+		queue_free()
+		return
+
 	_frame += 1
 
 	# Gestion rotation
@@ -76,5 +94,7 @@ func _move_step() -> void:
 
 	if _frame >= move_frames:
 		_frame = 0
-		_direction = Direction.NONE
-		print(position)
+		_sequence_index = (_sequence_index) % _direction_sequence.size()
+		_direction = _direction_sequence[_sequence_index]
+		_direction_history.append(_direction)
+		_sequence_index += 1
