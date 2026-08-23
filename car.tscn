@@ -319,8 +319,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k61xc")
 
-[node name="car2" type="Node3D" unique_id=2011869009]
+[node name="car" type="Node3D" unique_id=2011869009]
 script = ExtResource("1_uoj53")
+pipe_color = null
 
 [node name="RootNode" type="Node3D" parent="." unique_id=526197074]
 transform = Transform3D(-0.0027658378, -9.273246e-26, -4.1762988e-10, 0, 0.0027658378, -6.1413937e-19, 4.1762988e-10, -6.1413937e-19, -0.0027658378, 0, 0, 0)

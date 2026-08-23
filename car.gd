@@ -44,8 +44,10 @@ func _ready() -> void:
 
 	if pipe_color == PipeColor.BLUE :
 		_direction_sequence = [Direction.RIGHT, Direction.RIGHT, Direction.UP, Direction.RIGHT, Direction.RIGHT, Direction.DOWN]
+		_set_material("res://material_car_blue.tres")
 	if pipe_color == PipeColor.RED :
 		_direction_sequence = [Direction.RIGHT, Direction.RIGHT]
+		_set_material("res://material_car_red.tres")
 
 	_direction_history = [_direction_sequence[0]]
 
@@ -99,3 +101,10 @@ func _move_step() -> void:
 		_direction = _direction_sequence[_sequence_index]
 		_direction_history.append(_direction)
 		_sequence_index += 1
+
+func _set_material(material_path: String) -> void:
+	var mesh_node = get_node("RootNode/frog/frog_paint_texture_0")
+	if mesh_node:
+		var material = load(material_path)
+		if material:
+			mesh_node.set_surface_override_material(0, material)
