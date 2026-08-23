@@ -1,4 +1,4 @@
-extends Node3D
+extends Area3D
 
 const move_distance := 1.0
 const move_frames := 30
