@@ -40,13 +40,12 @@ fov = 60.0
 size = 11.0
 script = ExtResource("2_noarx")
 
-[node name="player" type="StaticBody3D" parent="." unique_id=2042931486]
+[node name="player" type="Area3D" parent="." unique_id=2042931486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001619339)
 script = ExtResource("2_a0tk4")
 
 [node name="Sketchfab_Scene2" parent="player" unique_id=716058584 instance=ExtResource("4_r3fl7")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, -0.017816424, 0.10284525)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=755864624]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)

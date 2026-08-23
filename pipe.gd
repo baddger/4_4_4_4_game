@@ -1,6 +1,6 @@
 extends Node3D
 
-const CAR_SCENE = preload("res://car.tscn")
+const CAR_SCENE = preload("res://car.scn")
 const SPAWN_INTERVAL = 2.0
 
 enum PipeColor { BLUE, RED }

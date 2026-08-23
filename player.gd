@@ -1,4 +1,4 @@
-extends Node3D
+extends Area3D
 
 const move_distance := 1.0
 const move_frames := 10
@@ -35,9 +35,58 @@ const INPUT_TO_DIRECTION := {
 	"ui_right": Direction.RIGHT,
 }
 
+func _on_area_entered(area: Area3D) -> void:
+	# Destroy the player when colliding with another area
+	queue_free()
+
+func _on_body_entered(body: Node3D) -> void:
+	var explosion = GPUParticles3D.new()
+	explosion.amount = 500
+	explosion.lifetime = 2.0
+	explosion.one_shot = true
+	explosion.explosiveness = 1.0
+	
+	# ✅ Use a mesh for particles (works on all versions)
+	var mesh = SphereMesh.new()
+	mesh.radius = 0.1
+	mesh.height = 0.1
+	explosion.draw_pass_1 = mesh
+	
+	var material = ParticleProcessMaterial.new()  # Or ParticleProcessMaterial
+	material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
+	material.emission_sphere_radius = 0.8
+	material.spread = 180.0
+	material.initial_velocity_min = 2.0
+	material.initial_velocity_max = 5.0
+	material.gravity = Vector3(0, -9.8, 0)
+	material.damping_min = 2.0
+	material.damping_max = 4.0
+	
+	# Color ramp for fade effect
+	var color_ramp = Gradient.new()
+	color_ramp.colors = [
+		Color(1.0, 0.9, 0.2, 1.0),
+		Color(1.0, 0.5, 0.0, 1.0),
+		Color(0.8, 0.1, 0.0, 0.8),
+		Color(0.0, 0.0, 0.0, 0.0)
+	]
+	material.color_ramp = color_ramp
+	
+	explosion.process_material = material
+	
+	get_tree().current_scene.add_child(explosion)
+	explosion.global_position = global_position
+	explosion.emitting = true
+	
+	queue_free()
+	
 func _ready() -> void:
 	_start_pos = position
 	rotation.y = direction_rotations[_direction_history[0]]
+	
+	# Setup collision detection
+	area_entered.connect(_on_area_entered)
+	body_entered.connect(_on_body_entered)
 
 
 func _physics_process(_delta: float) -> void:
