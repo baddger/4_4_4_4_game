@@ -2,8 +2,6 @@ extends Area3D
 class_name Creature
 
 const move_distance := 1.0
-var move_frames := 60
-var jump_height := 1.0
 
 var _frame := 0
 var _start_pos := position
@@ -33,7 +31,7 @@ const INPUT_TO_DIRECTION := {
 	"ui_right": Direction.RIGHT,
 }
 
-func _move_step() -> void:
+func _move_step(move_frames : int, jump_height: float) -> void:
 
 	_frame += 1
 	# Gestion rotation
@@ -57,19 +55,26 @@ func _move_step() -> void:
 
 
 func explode_animation() -> void:
+
+	# GPUParticles3D
 	var explosion = GPUParticles3D.new()
 	explosion.amount = 500
 	explosion.lifetime = 2.0
 	explosion.one_shot = true
 	explosion.explosiveness = 1.0
 
-	# ✅ Use a mesh for particles (works on all versions)
+	# SphereMesh
 	var mesh = SphereMesh.new()
 	mesh.radius = 0.1
 	mesh.height = 0.1
+	var mesh_material = StandardMaterial3D.new()
+	mesh_material.albedo_color = Color.RED
+	mesh.material = mesh_material
+
 	explosion.draw_pass_1 = mesh
 
-	var material = ParticleProcessMaterial.new()  # Or ParticleProcessMaterial
+	# ParticleProcessMaterial
+	var material = ParticleProcessMaterial.new()
 	material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
 	material.emission_sphere_radius = 0.8
 	material.spread = 180.0
@@ -79,17 +84,8 @@ func explode_animation() -> void:
 	material.damping_min = 2.0
 	material.damping_max = 4.0
 
-	# Color ramp for fade effect
-	var color_ramp = Gradient.new()
-	color_ramp.colors = [
-		Color(1.0, 0.9, 0.2, 1.0),
-		Color(1.0, 0.5, 0.0, 1.0),
-		Color(1.0, 0.1, 0.0, 0.8),
-		Color(1.0, 0.0, 0.0, 0.0)
-	]
-	material.color_ramp = color_ramp
-
 	explosion.process_material = material
+
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_position = global_position
 	explosion.emitting = true

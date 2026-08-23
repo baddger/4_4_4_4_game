@@ -24,8 +24,7 @@ func _ready() -> void:
 
 	rotation.y = direction_rotations[_direction_history[0]]
 
-	move_frames = 30
-	jump_height = 0.2
+
 
 func _physics_process(_delta: float) -> void:
 
@@ -35,7 +34,9 @@ func _physics_process(_delta: float) -> void:
 		queue_free()
 		return
 
-	_move_step()
+	var move_frames = 30
+	var jump_height = 0.0
+	_move_step(move_frames, jump_height)
 
 	if _frame >= move_frames:
 		_frame = 0

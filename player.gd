@@ -10,10 +10,6 @@ func _ready() -> void:
 	_direction_history = [Direction.UP]
 	rotation.y = direction_rotations[Direction.UP]
 
-	move_frames = 10
-	jump_height = 0.2
-
-
 func _on_area_entered(area: Area3D) -> void:
 	explode_animation()
 	_die()
@@ -22,7 +18,9 @@ func _physics_process(_delta: float) -> void:
 	if _direction == Direction.NONE:
 		_read_input()
 	else:
-		_move_step()
+		var move_frames = 15
+		var jump_height = 5.0
+		_move_step(move_frames, jump_height)
 		if _frame >= move_frames:
 			_frame = 0
 			_direction = Direction.NONE
@@ -37,6 +35,7 @@ func _read_input() -> void:
 func _die() -> void:
 	# Stop the player from reacting further and hide it
 	set_physics_process(false)
+	area_entered.disconnect(_on_area_entered)
 	monitoring = false
 	monitorable = false
 	visible = false
