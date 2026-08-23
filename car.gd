@@ -1,4 +1,5 @@
-extends Area3D
+extends Creature
+class_name Car
 
 const move_distance := 1.0
 const move_frames := 30
@@ -17,28 +18,7 @@ var _direction_history: Array
 
 var _sequence_index := 0
 
-enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
 
-const direction_vectors := {
-	Direction.UP: Vector3.FORWARD,
-	Direction.DOWN: Vector3.BACK,
-	Direction.LEFT: Vector3.LEFT,
-	Direction.RIGHT: Vector3.RIGHT,
-}
-
-const direction_rotations := {
-	Direction.DOWN:  0,
-	Direction.RIGHT: 0.5 * PI,
-	Direction.UP:    1.0 * PI,
-	Direction.LEFT:  1.5 * PI,
-}
-
-const INPUT_TO_DIRECTION := {
-	"ui_up": Direction.UP,
-	"ui_down": Direction.DOWN,
-	"ui_left": Direction.LEFT,
-	"ui_right": Direction.RIGHT,
-}
 
 func _ready() -> void:
 
