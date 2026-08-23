@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dx5c6imhngeck"
-path.s3tc="res://.godot/imported/paint_texture_baseColor.png-7cdbf321fa735b857bf06839f979b9fc.s3tc.ctex"
+path.s3tc="res://.godot/imported/paint_texture_baseColor.png-7d9758206582d7013a5843c12e3baff7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/paint_texture_baseColor.png"
-dest_files=["res://.godot/imported/paint_texture_baseColor.png-7cdbf321fa735b857bf06839f979b9fc.s3tc.ctex"]
+source_file="res://frog_car/paint_texture_baseColor.png"
+dest_files=["res://.godot/imported/paint_texture_baseColor.png-7d9758206582d7013a5843c12e3baff7.s3tc.ctex"]
 
 [params]
 

@@ -44,10 +44,10 @@ func _ready() -> void:
 
 	if pipe_color == PipeColor.BLUE :
 		_direction_sequence = [Direction.RIGHT, Direction.RIGHT, Direction.UP, Direction.RIGHT, Direction.RIGHT, Direction.DOWN]
-		_set_material("res://material_car_blue.tres")
+		_set_material("res://frog_car/material_car_blue.tres")
 	if pipe_color == PipeColor.RED :
 		_direction_sequence = [Direction.RIGHT, Direction.RIGHT]
-		_set_material("res://material_car_red.tres")
+		_set_material("res://frog_car/material_car_red.tres")
 
 	_direction_history = [_direction_sequence[0]]
 

@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dimay8bf5n72h"]
 
-[ext_resource type="Texture2D" uid="uid://dcq5wu8m6o5u3" path="res://resources/paint_texture_baseColorBlue.png" id="1_ajhh3"]
+[ext_resource type="Texture2D" uid="uid://dcq5wu8m6o5u3" path="res://frog_car/paint_texture_baseColorBlue.png" id="1_ajhh3"]
 
 [resource]
 resource_name = "paint_texture"

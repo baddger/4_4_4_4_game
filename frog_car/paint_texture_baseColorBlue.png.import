@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dcq5wu8m6o5u3"
-path.s3tc="res://.godot/imported/paint_texture_baseColorBlue.png-cddb0e53a0991a20e740025dbac72cb0.s3tc.ctex"
+path.s3tc="res://.godot/imported/paint_texture_baseColorBlue.png-8c5960f6c68bf7d41976155db10c0e36.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/paint_texture_baseColorBlue.png"
-dest_files=["res://.godot/imported/paint_texture_baseColorBlue.png-cddb0e53a0991a20e740025dbac72cb0.s3tc.ctex"]
+source_file="res://frog_car/paint_texture_baseColorBlue.png"
+dest_files=["res://.godot/imported/paint_texture_baseColorBlue.png-8c5960f6c68bf7d41976155db10c0e36.s3tc.ctex"]
 
 [params]
 

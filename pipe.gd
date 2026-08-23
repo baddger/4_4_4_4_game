@@ -9,6 +9,7 @@ enum PipeColor { BLUE, RED }
 
 var _spawn_timer = 0.0
 
+
 func _ready() -> void:
 	pass
 
