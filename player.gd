@@ -37,7 +37,7 @@ const INPUT_TO_DIRECTION := {
 
 func _on_area_entered(area: Area3D) -> void:
 	# Destroy the player when colliding with another area
-	queue_free()
+	_die()
 
 func _on_body_entered(body: Node3D) -> void:
 	var explosion = GPUParticles3D.new()
@@ -78,8 +78,18 @@ func _on_body_entered(body: Node3D) -> void:
 	explosion.global_position = global_position
 	explosion.emitting = true
 	
-	queue_free()
-	
+	_die()
+
+func _die() -> void:
+	# Stop the player from reacting further and hide it
+	set_physics_process(false)
+	monitoring = false
+	monitorable = false
+	visible = false
+
+	await get_tree().create_timer(2.0).timeout
+	get_tree().reload_current_scene()
+
 func _ready() -> void:
 	_start_pos = position
 	rotation.y = direction_rotations[_direction_history[0]]
