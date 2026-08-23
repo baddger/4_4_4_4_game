@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx5c6imhngeck"
-path.s3tc="res://.godot/imported/paint_texture_baseColor.png-2a0aaa15a47df8ae1f02c5bbdcff3130.s3tc.ctex"
+uid="uid://i5edku1xa77c"
+path.s3tc="res://.godot/imported/cible.png-33259b6b654709947974b0923b954ee8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://cartoon_frog_blue/textures/paint_texture_baseColor.png"
-dest_files=["res://.godot/imported/paint_texture_baseColor.png-2a0aaa15a47df8ae1f02c5bbdcff3130.s3tc.ctex"]
+source_file="res://resources/cible.png"
+dest_files=["res://.godot/imported/cible.png-33259b6b654709947974b0923b954ee8.s3tc.ctex"]
 
 [params]
 

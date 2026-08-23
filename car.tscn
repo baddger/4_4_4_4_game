@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bu0mxcs1gf6bb"]
 
-[ext_resource type="Script" uid="uid://c6yswem5rnlxo" path="res://car_blue.gd" id="1_uoj53"]
+[ext_resource type="Script" uid="uid://c6yswem5rnlxo" path="res://car.gd" id="1_uoj53"]
 [ext_resource type="PackedScene" uid="uid://b4uptr7t3rnym" path="res://cartoon_frog_blue/scene.gltf" id="3_k61xc"]
 
 [node name="car" type="Node3D" unique_id=2011869009]
