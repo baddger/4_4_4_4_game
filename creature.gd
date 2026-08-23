@@ -1,6 +1,15 @@
 extends Area3D
 class_name Creature
 
+const move_distance := 1.0
+var move_frames := 60
+var jump_height := 1.0
+
+var _frame := 0
+var _start_pos := position
+var _direction : Direction
+var _direction_history: Array
+
 enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
 
 const direction_vectors := {
@@ -24,6 +33,27 @@ const INPUT_TO_DIRECTION := {
 	"ui_right": Direction.RIGHT,
 }
 
+func _move_step() -> void:
+
+	_frame += 1
+	# Gestion rotation
+	var prev_rotation = direction_rotations[_direction_history[-2]]
+	var target_rotation = direction_rotations[_direction]
+	var delta_angle := wrapf(target_rotation - prev_rotation, -PI, PI)
+	var rotation_step = delta_angle / move_frames
+	rotation.y += rotation_step
+	rotation.y = wrapf(rotation.y, 0.0, TAU)
+
+	# Gestion movement
+	var dist_per_frame = move_distance / move_frames
+	position += direction_vectors[_direction] * dist_per_frame
+
+	# Gestion saut
+	var step_size := float(_frame) / move_frames
+	# trajectoire parabolique
+	var jump = jump_height * step_size * (1.0 - step_size)
+	position.y = _start_pos.y + jump
+	position = position.snapped(Vector3.ONE * 0.001)
 
 
 func explode_animation() -> void:
@@ -54,8 +84,8 @@ func explode_animation() -> void:
 	color_ramp.colors = [
 		Color(1.0, 0.9, 0.2, 1.0),
 		Color(1.0, 0.5, 0.0, 1.0),
-		Color(0.8, 0.1, 0.0, 0.8),
-		Color(0.0, 0.0, 0.0, 0.0)
+		Color(1.0, 0.1, 0.0, 0.8),
+		Color(1.0, 0.0, 0.0, 0.0)
 	]
 	material.color_ramp = color_ramp
 

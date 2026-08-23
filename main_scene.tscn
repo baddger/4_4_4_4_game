@@ -80,6 +80,7 @@ pipe_color = 1
 
 [node name="Sketchfab_Scene" parent="pipe_red" unique_id=1510400904 instance=ExtResource("7_wc5p8")]
 transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, -0.08463383, 0.49954867, -0.0395298)
+visible = false
 
 [node name="pipe_red2" type="Node3D" parent="." unique_id=1954954113]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5, 0, -4)
