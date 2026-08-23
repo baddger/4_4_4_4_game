@@ -106,5 +106,5 @@ script = ExtResource("7_jsk3o")
 transform = Transform3D(-1.3113416e-07, 0, 2.9999998, 0, 3, 0, -2.9999998, 0, -1.3113416e-07, -0.08463383, 0.49954867, -0.0395298)
 
 [node name="car" parent="." unique_id=711425009 instance=ExtResource("1_nfk4m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.303693, 0, 2.3562112)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.303693, 0, 5.14005)
 pipe_color = 1
