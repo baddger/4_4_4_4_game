@@ -103,7 +103,7 @@ func _move_step() -> void:
 		_sequence_index += 1
 
 func _set_material(material_path: String) -> void:
-	var mesh_node = get_node("RootNode/frog/frog_paint_texture_0")
+	var mesh_node = get_node("frog/frog_paint_texture_0")
 	if mesh_node:
 		var material = load(material_path)
 		if material:

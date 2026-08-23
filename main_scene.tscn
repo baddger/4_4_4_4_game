@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ceyxli06ulbfb"]
 
 [ext_resource type="Texture2D" uid="uid://i5edku1xa77c" path="res://resources/cible.png" id="1_a202f"]
+[ext_resource type="PackedScene" uid="uid://15612lu2hwxe" path="res://car.scn" id="1_nfk4m"]
 [ext_resource type="Script" uid="uid://d3i61qixjh2fm" path="res://player.gd" id="2_a0tk4"]
 [ext_resource type="Script" uid="uid://vclctq1eg1rc" path="res://camera_zqsd_and_mouse.gd" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://dx2ojub4784ku" path="res://frog_plush/scene.gltf" id="4_r3fl7"]
@@ -25,6 +26,10 @@ ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.32
 
 [node name="Node3D" type="Node3D" unique_id=1254261534]
+
+[node name="car" parent="." unique_id=2083960637 instance=ExtResource("1_nfk4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7112541, 0, -1.7837715)
+pipe_color = 1
 
 [node name="platform" type="MeshInstance3D" parent="." unique_id=1539844984]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.5, -4.5)
