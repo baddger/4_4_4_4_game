@@ -12,7 +12,8 @@ extends Camera3D
 
 ## The camera only starts moving once the target is this many meters
 ## ahead of or behind its current followed position (dead zone).
-@export var dead_zone: float = 2.0
+@export var dead_zone_up: float = 1
+@export var dead_zone_down: float = 0
 
 var _target: Node3D
 var _z_offset: float
@@ -37,7 +38,11 @@ func _physics_process(delta: float) -> void:
 	var target_z := _target.global_position.z + _z_offset
 	var diff := target_z - global_position.z
 
-	if absf(diff) > dead_zone:
-		var desired_z := target_z - signf(diff) * dead_zone
+	if diff > 0 and diff > dead_zone_down:
+		var desired_z := target_z - signf(diff) * dead_zone_down
+		var weight := 1.0 - exp(-smoothing_speed * delta)
+		global_position.z = lerp(global_position.z, desired_z, weight)
+	if diff < 0 and diff < -dead_zone_up:
+		var desired_z := target_z - signf(diff) * dead_zone_up
 		var weight := 1.0 - exp(-smoothing_speed * delta)
 		global_position.z = lerp(global_position.z, desired_z, weight)
