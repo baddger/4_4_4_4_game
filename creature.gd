@@ -8,7 +8,7 @@ var _start_pos := position
 var _direction : Direction
 var _direction_history: Array
 
-enum Direction { NONE, UP, DOWN, LEFT, RIGHT }
+enum Direction { NONE, UP, DOWN, LEFT, RIGHT, BACKFLIP }
 
 const direction_vectors := {
 	Direction.UP: Vector3.FORWARD,
@@ -30,6 +30,17 @@ const INPUT_TO_DIRECTION := {
 	"ui_left": Direction.LEFT,
 	"ui_right": Direction.RIGHT,
 }
+func _move_step_back(move_frames : int, jump_height: float) -> void:
+	_frame += 1
+	
+		# Gestion movement
+	var dist_per_frame = move_distance / move_frames
+	position += direction_vectors[_direction_history[-2]] * dist_per_frame
+
+	position = position.snapped(Vector3.ONE * 0.001)
+
+	pass
+
 
 func _move_step(move_frames : int, jump_height: float) -> void:
 
