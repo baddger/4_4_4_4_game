@@ -7,7 +7,7 @@ enum PipeColor { BLUE, RED }
 const material_blue = preload("res://frog_car/material_car_blue.tres")
 const material_red = preload("res://frog_car/material_car_red.tres")
 
-const blue_sequence = [st8.RIGHT, st8.RIGHT, st8.UP, st8.RIGHT, st8.RIGHT, st8.DOWN]
+const blue_sequence = [st8.RIGHT, st8.RIGHT, st8.NONE, st8.UP, st8.RIGHT, st8.RIGHT, st8.DOWN]
 const red_sequence = [st8.RIGHT]
 
 var _state_sequence: Array

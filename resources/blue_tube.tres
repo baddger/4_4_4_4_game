@@ -1,0 +1,5 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cthightia4h64"]
+
+[resource]
+albedo_color = Color(0.14549479, 0.44772458, 0.80444586, 1)
+roughness = 0.38

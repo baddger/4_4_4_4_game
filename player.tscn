@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://booiku28rf0gp"]
+
+[ext_resource type="PackedScene" uid="uid://dx2ojub4784ku" path="res://frog_plush/scene.gltf" id="1_4flbx"]
+
+[node name="Sketchfab_Scene" unique_id=101087472 instance=ExtResource("1_4flbx")]
+
+[node name="Sketchfab_model" parent="." index="0" unique_id=964812805]
+transform = Transform3D(0.7, 0, 0, 0, -3.059797e-08, 0.7, 0, -0.7, -3.059797e-08, 0, -0.44259772, 0.15289688)
