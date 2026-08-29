@@ -41,7 +41,13 @@ func _read_input() -> void:
 	if get_state() == st8.NONE:
 		for action in input_to_state:
 				if Input.is_action_just_pressed(action):
-					set_state(input_to_state[action])
+					print(position)
+					var new_state = input_to_state[action]
+					if position.x == 5 and new_state == st8.RIGHT:
+						return
+					if position.x == -5 and new_state == st8.LEFT:
+						return
+					set_state(new_state)
 
 
 					return
