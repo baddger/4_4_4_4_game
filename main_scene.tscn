@@ -7,20 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://d4c8nbt7duoj6" path="res://pipe.tscn" id="6_66tet"]
 [ext_resource type="Script" uid="uid://vf6nfeax82ya" path="res://script/pipe.gd" id="7_jsk3o"]
 [ext_resource type="PackedScene" uid="uid://dmitvlbfay30f" path="res://ground.tscn" id="7_wr18j"]
+[ext_resource type="PackedScene" uid="uid://cyqp0yolag4ww" path="res://resources/strunned_stars/scene.gltf" id="8_66tet"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lgns8"]
 
 [sub_resource type="Environment" id="Environment_1sea3"]
 background_mode = 1
 background_color = Color(0, 0, 0.49411765, 1)
-ambient_light_source = 1
+ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.0
+ambient_light_energy = 0.5
 
 [node name="Node3D" type="Node3D" unique_id=1254261534]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=148028450]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, -0.5, 10, 6)
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 14.80501, 6)
 fov = 60.0
 size = 11.0
 script = ExtResource("2_noarx")
@@ -38,7 +39,7 @@ spot_angle = 26.57
 transform = Transform3D(0.8184864, -0.497554, -0.2872631, 0.5469237, 0.5216585, 0.6547878, -0.17593902, -0.69304585, 0.6990944, -3.592381, 4.337541, -3.1974077)
 light_energy = 7.047
 shadow_enabled = true
-shadow_bias = 0.538
+shadow_bias = 3.78
 spot_range = 23.748
 spot_attenuation = 0.41
 spot_angle = 33.67
@@ -95,3 +96,6 @@ pipe_color = 1
 
 [node name="ground3" parent="." unique_id=1547835013 instance=ExtResource("7_wr18j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22)
+
+[node name="Sketchfab_Scene" parent="." unique_id=1184980699 instance=ExtResource("8_66tet")]
+transform = Transform3D(0.9938901, 0, -0.11037413, 0, 1, 0, 0.11037413, 0, 0.9938901, -1.6529018, 0, 1.2384815)
