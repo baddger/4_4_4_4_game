@@ -26,10 +26,10 @@ func _on_area_entered(_area: Area3D) -> void:
 
 func _physics_process(_delta: float) -> void:
 	_read_input()
-	if get_sate() != st8.NONE:
+	if get_state() != st8.NONE:
 		var move_frames = 20
 		var jump_height = 5.0
-		if get_sate() != st8.BACKFLIP :
+		if get_state() != st8.BACKFLIP :
 			_move_step(move_frames, jump_height)
 		else :
 			_move_step_back(move_frames, jump_height)
@@ -38,14 +38,14 @@ func _physics_process(_delta: float) -> void:
 			set_state(st8.NONE)
 
 func _read_input() -> void:
-	if get_sate() == st8.NONE:
+	if get_state() == st8.NONE:
 		for action in input_to_state:
 				if Input.is_action_just_pressed(action):
 					set_state(input_to_state[action])
 
 
 					return
-	elif get_sate() == st8.BACKFLIP:
+	elif get_state() == st8.BACKFLIP:
 		return
 	else :
 		for action in input_to_state:

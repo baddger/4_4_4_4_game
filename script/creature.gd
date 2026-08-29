@@ -39,13 +39,13 @@ func _move_step_back(move_frames : int, _jump_height: float) -> void:
 
 	# Gestion movement
 	var start = _position_history[-1]
-	var end = _position_history[-2] #- direction_vectors[get_last_direction_state()]
+	var end = _position_history[-2]
 	translation(start, end, move_frames)
 
 	# Gestion rotation
 	var prev_rotation = _rotation_history[-1].y
 #	var target_rotation = _rotation_history[-2].y
-	var target_rotation = direction_rotations[get_last_direction_state()]
+	var target_rotation = direction_rotations[_state_history[-2]]
 
 	y_rotate(prev_rotation, target_rotation, move_frames)
 
@@ -90,7 +90,7 @@ func _move_step(move_frames : int, jump_height: float) -> void:
 	y_rotate(prev_rotation, target_rotation, move_frames)
 	# Gestion movement
 	var start = _position_history[-1]
-	var end = _position_history[-1] + direction_vectors[get_last_direction_state()]
+	var end = _position_history[-1] + direction_vectors[get_state()]
 	translation(start, end, move_frames)
 
 
@@ -107,5 +107,5 @@ func set_state(state) :
 	_position_history.append(position)
 	_rotation_history.append(rotation)
 
-func get_sate() :
+func get_state() :
 	return _state_history[-1]
