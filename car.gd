@@ -7,8 +7,8 @@ enum PipeColor { BLUE, RED }
 const material_blue = preload("res://frog_car/material_car_blue.tres")
 const material_red = preload("res://frog_car/material_car_red.tres")
 
-const blue_sequence = [Direction.RIGHT, Direction.RIGHT, Direction.UP, Direction.RIGHT, Direction.RIGHT, Direction.DOWN]
-const red_sequence = [Direction.RIGHT]
+const blue_sequence = [st8.RIGHT, st8.RIGHT, st8.UP, st8.RIGHT, st8.RIGHT, st8.DOWN]
+const red_sequence = [st8.RIGHT]
 
 var _state_sequence: Array
 var _sequence_index := 0
@@ -22,7 +22,7 @@ func _ready() -> void:
 		_state_sequence = red_sequence
 		mesh_node.set_surface_override_material(0, material_red)
 
-	set_sate(_state_sequence[0])
+	set_state(_state_sequence[0])
 	next_in_sequence()
 	rotation.y = direction_rotations[_state_history[0]]
 
@@ -49,5 +49,5 @@ func _physics_process(_delta: float) -> void:
 func next_in_sequence():
 	_sequence_index = (_sequence_index) % _state_sequence.size()
 	var state = _state_sequence[_sequence_index]
-	set_sate(state)
+	set_state(state)
 	_sequence_index += 1

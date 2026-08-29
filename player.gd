@@ -1,61 +1,64 @@
 extends Creature
 class_name Player
 
+
+const input_to_state := {
+	"ui_up": st8.UP,
+	"ui_down": st8.DOWN,
+	"ui_left": st8.LEFT,
+	"ui_right": st8.RIGHT,
+}
+
+
 func _ready() -> void:
 	# Setup collision detection
 	area_entered.connect(_on_area_entered)
+	set_state(st8.UP)
+	set_state(st8.NONE)
 
-	_state_history = [Direction.UP, Direction.NONE]
-	_position_history = [position]
-	_rotation_history = [rotation]
 
 	rotation.y = direction_rotations[get_last_valid_direction(0)]
 
-func _on_area_entered(area: Area3D) -> void:
-	explode_animation()
+func _on_area_entered(_area: Area3D) -> void:
+	area_entered.disconnect(_on_area_entered)
+	Utilities.explode_animation(global_position)
 	_die()
 
 func _physics_process(_delta: float) -> void:
 	_read_input()
-	if _direction != Direction.NONE:
+	if get_sate() != st8.NONE:
 		var move_frames = 20
 		var jump_height = 5.0
-		if _direction != Direction.BACKFLIP :
+		if get_sate() != st8.BACKFLIP :
 			_move_step(move_frames, jump_height)
 		else :
 			_move_step_back(move_frames, jump_height)
 		if _frame >= move_frames:
 			_frame = 0
-			_direction = Direction.NONE
+			set_state(st8.NONE)
 
 func _read_input() -> void:
-	if _direction == Direction.NONE:
-		for action in INPUT_TO_DIRECTION:
+	if get_sate() == st8.NONE:
+		for action in input_to_state:
 				if Input.is_action_just_pressed(action):
-					_direction = INPUT_TO_DIRECTION[action]
-					_state_history.append(_direction)
-					_position_history.append(position)
-					_rotation_history.append(rotation)
+					set_state(input_to_state[action])
+
 
 					return
-	elif _direction == Direction.BACKFLIP:
+	elif get_sate() == st8.BACKFLIP:
 		return
 	else :
-		for action in INPUT_TO_DIRECTION:
+		for action in input_to_state:
 				if Input.is_action_just_pressed(action):
-					_direction = Direction.BACKFLIP
-					_state_history.append(_direction)
+					set_state(st8.BACKFLIP)
 					_frame = 0
 					return
-
 
 func _die() -> void:
 	# Stop the player from reacting further and hide it
 	set_physics_process(false)
-	area_entered.disconnect(_on_area_entered)
 	monitoring = false
 	monitorable = false
 	visible = false
-
 	await get_tree().create_timer(2.0).timeout
 	get_tree().reload_current_scene()
