@@ -7,6 +7,8 @@ var _frame := 0
 var _start_pos := position
 var _direction : Direction
 var _direction_history: Array
+var _position_history: Array
+var _rotation_history: Array
 
 enum Direction { NONE, UP, DOWN, LEFT, RIGHT, BACKFLIP }
 
@@ -30,14 +32,36 @@ const INPUT_TO_DIRECTION := {
 	"ui_left": Direction.LEFT,
 	"ui_right": Direction.RIGHT,
 }
+
+func get_last_valid_direction(indice  : int) -> Direction:
+	"""Retrieve the last direction in history that is not NONE or BACKFLIP."""
+	for i in range(_direction_history.size() - 1, -1, -1):
+		var direction = _direction_history[i]
+		if direction != Direction.NONE and direction != Direction.BACKFLIP:
+			if indice == 0 :
+				return direction
+			else :
+				indice -= 1
+	return Direction.NONE
+
 func _move_step_back(move_frames : int, jump_height: float) -> void:
 	_frame += 1
 	
-		# Gestion movement
-	var dist_per_frame = move_distance / move_frames
-	position += direction_vectors[_direction_history[-2]] * dist_per_frame
-
+	# Gestion movement
+	var dist_per_frame = direction_vectors[get_last_valid_direction(0)] * (move_distance / move_frames)
+	var dist = _frame * dist_per_frame
+	position = _position_history[-1] +  dist
 	position = position.snapped(Vector3.ONE * 0.001)
+	
+		# Gestion rotation
+	var prev_rotation = direction_rotations[get_last_valid_direction(1)]
+	var target_rotation = direction_rotations[get_last_valid_direction(0)]
+	var delta_angle := wrapf(target_rotation - prev_rotation, -PI, PI)
+	var rotation_step = delta_angle / move_frames
+	rotation.y += rotation_step
+	rotation.y = wrapf(rotation.y, 0.0, TAU)
+
+	
 
 	pass
 
@@ -46,16 +70,17 @@ func _move_step(move_frames : int, jump_height: float) -> void:
 
 	_frame += 1
 	# Gestion rotation
-	var prev_rotation = direction_rotations[_direction_history[-2]]
-	var target_rotation = direction_rotations[_direction]
+	var prev_rotation = direction_rotations[get_last_valid_direction(1)]
+	var target_rotation = direction_rotations[get_last_valid_direction(0)]
 	var delta_angle := wrapf(target_rotation - prev_rotation, -PI, PI)
 	var rotation_step = delta_angle / move_frames
 	rotation.y += rotation_step
 	rotation.y = wrapf(rotation.y, 0.0, TAU)
 
 	# Gestion movement
-	var dist_per_frame = move_distance / move_frames
-	position += direction_vectors[_direction] * dist_per_frame
+	var dist_per_frame = direction_vectors[get_last_valid_direction(0)] * (move_distance / move_frames)
+	var dist = _frame * dist_per_frame
+	position = _position_history[-1] +  dist
 
 	# Gestion saut
 	var step_size := float(_frame) / move_frames

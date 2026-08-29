@@ -21,7 +21,9 @@ func _ready() -> void:
 
 	next_in_sequence()
 	_direction_history.append(_direction)
-
+	_position_history.append(position)
+	_rotation_history.append(rotation)
+	
 	rotation.y = direction_rotations[_direction_history[0]]
 
 
@@ -46,4 +48,6 @@ func next_in_sequence() :
 	_sequence_index = (_sequence_index) % _direction_sequence.size()
 	_direction = _direction_sequence[_sequence_index]
 	_direction_history.append(_direction)
+	_position_history.append(position)
+	_rotation_history.append(rotation)
 	_sequence_index += 1
