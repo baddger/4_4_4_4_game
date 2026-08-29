@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwmhg4kaiux7s"
-path="res://.godot/imported/texture_napkin.png-7b5e7bc69bba38290f115179764c38b4.ctex"
+uid="uid://y15c8a0x671x"
+path.s3tc="res://.godot/imported/texture_napking1100.jpg-0ac88972135cdbc250289695913e3cb7.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://texture_napkin.png"
-dest_files=["res://.godot/imported/texture_napkin.png-7b5e7bc69bba38290f115179764c38b4.ctex"]
+source_file="res://resources/texture_napking1100.jpg"
+dest_files=["res://.godot/imported/texture_napking1100.jpg-0ac88972135cdbc250289695913e3cb7.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -23,7 +24,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +38,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

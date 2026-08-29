@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://cay4b2ioqis1g"]
 
-[ext_resource type="Script" uid="uid://c6yswem5rnlxo" path="res://car.gd" id="1_v0fi3"]
+[ext_resource type="Script" uid="uid://c6yswem5rnlxo" path="res://script/car.gd" id="1_v0fi3"]
 [ext_resource type="Material" uid="uid://datpjnw5tdq0j" path="res://frog_car/material_car_red.tres" id="2_v0fi3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_knx8r"]

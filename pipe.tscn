@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d4c8nbt7duoj6"]
 
-[ext_resource type="Script" uid="uid://vf6nfeax82ya" path="res://pipe.gd" id="1_78010"]
+[ext_resource type="Script" uid="uid://vf6nfeax82ya" path="res://script/pipe.gd" id="1_78010"]
 [ext_resource type="PackedScene" uid="uid://se4f6j0fr2fy" path="res://warp_pipe/scene.gltf" id="2_arayy"]
 
 [node name="Node3D" type="Node3D" unique_id=483337384]

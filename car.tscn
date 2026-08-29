@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bu0mxcs1gf6bb"]
 
-[ext_resource type="Script" uid="uid://c6yswem5rnlxo" path="res://car.gd" id="1_uoj53"]
+[ext_resource type="Script" uid="uid://c6yswem5rnlxo" path="res://script/car.gd" id="1_uoj53"]
 [ext_resource type="ArrayMesh" uid="uid://btc7u7peyiaki" path="res://frog_car/new_array_mesh.tres" id="2_k61xc"]
 [ext_resource type="ArrayMesh" uid="uid://cadlrcopp2ld4" path="res://frog_car/mesh_frog.tres" id="2_uoj53"]
 [ext_resource type="ArrayMesh" uid="uid://illnvhqc73nh" path="res://frog_car/new_array_mesh2.tres" id="3_06lh1"]

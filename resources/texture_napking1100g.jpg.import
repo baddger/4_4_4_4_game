@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfr5264rm63o5"
-path.s3tc="res://.godot/imported/texture_napkin.jpg-dd3981adaad7ca34597f9ab0f6c601e7.s3tc.ctex"
+uid="uid://67ep77u65fdc"
+path.s3tc="res://.godot/imported/texture_napking1100g.jpg-51a614d1f8329fa1677d15c6d3dc2e13.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://texture_napkin.jpg"
-dest_files=["res://.godot/imported/texture_napkin.jpg-dd3981adaad7ca34597f9ab0f6c601e7.s3tc.ctex"]
+source_file="res://resources/texture_napking1100g.jpg"
+dest_files=["res://.godot/imported/texture_napking1100g.jpg-51a614d1f8329fa1677d15c6d3dc2e13.s3tc.ctex"]
 
 [params]
 
