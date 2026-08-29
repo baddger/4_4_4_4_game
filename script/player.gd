@@ -17,7 +17,7 @@ func _ready() -> void:
 	set_state(st8.NONE)
 
 
-	rotation.y = direction_rotations[get_last_valid_direction(0)]
+	rotation.y = direction_rotations[get_last_direction_state()]
 
 func _on_area_entered(_area: Area3D) -> void:
 	area_entered.disconnect(_on_area_entered)
