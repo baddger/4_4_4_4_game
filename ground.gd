@@ -18,7 +18,7 @@ func _ready() -> void:
 	else:
 		push_warning("ground: no camera found to follow.")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not _target:
 		return
 

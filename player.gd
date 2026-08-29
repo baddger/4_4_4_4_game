@@ -5,11 +5,10 @@ func _ready() -> void:
 	# Setup collision detection
 	area_entered.connect(_on_area_entered)
 
-	_direction_history = [Direction.UP]
+	_state_history = [Direction.UP, Direction.NONE]
 	_position_history = [position]
 	_rotation_history = [rotation]
-	
-	_direction = Direction.NONE
+
 	rotation.y = direction_rotations[get_last_valid_direction(0)]
 
 func _on_area_entered(area: Area3D) -> void:
@@ -34,7 +33,7 @@ func _read_input() -> void:
 		for action in INPUT_TO_DIRECTION:
 				if Input.is_action_just_pressed(action):
 					_direction = INPUT_TO_DIRECTION[action]
-					_direction_history.append(_direction)
+					_state_history.append(_direction)
 					_position_history.append(position)
 					_rotation_history.append(rotation)
 
@@ -45,10 +44,10 @@ func _read_input() -> void:
 		for action in INPUT_TO_DIRECTION:
 				if Input.is_action_just_pressed(action):
 					_direction = Direction.BACKFLIP
-					_direction_history.append(_direction)
+					_state_history.append(_direction)
 					_frame = 0
 					return
-		
+
 
 func _die() -> void:
 	# Stop the player from reacting further and hide it

@@ -6,7 +6,7 @@ const move_distance := 1.0
 var _frame := 0
 var _start_pos := position
 var _direction : Direction
-var _direction_history: Array
+var _state_history: Array
 var _position_history: Array
 var _rotation_history: Array
 
@@ -35,8 +35,8 @@ const INPUT_TO_DIRECTION := {
 
 func get_last_valid_direction(indice  : int) -> Direction:
 	"""Retrieve the last direction in history that is not NONE or BACKFLIP."""
-	for i in range(_direction_history.size() - 1, -1, -1):
-		var direction = _direction_history[i]
+	for i in range(_state_history.size() - 1, -1, -1):
+		var direction = _state_history[i]
 		if direction != Direction.NONE and direction != Direction.BACKFLIP:
 			if indice == 0 :
 				return direction
@@ -46,13 +46,13 @@ func get_last_valid_direction(indice  : int) -> Direction:
 
 func _move_step_back(move_frames : int, jump_height: float) -> void:
 	_frame += 1
-	
+
 	# Gestion movement
 	var dist_per_frame = direction_vectors[get_last_valid_direction(0)] * (move_distance / move_frames)
 	var dist = _frame * dist_per_frame
 	position = _position_history[-1] +  dist
 	position = position.snapped(Vector3.ONE * 0.001)
-	
+
 		# Gestion rotation
 	var prev_rotation = direction_rotations[get_last_valid_direction(1)]
 	var target_rotation = direction_rotations[get_last_valid_direction(0)]
@@ -60,9 +60,6 @@ func _move_step_back(move_frames : int, jump_height: float) -> void:
 	var rotation_step = delta_angle / move_frames
 	rotation.y += rotation_step
 	rotation.y = wrapf(rotation.y, 0.0, TAU)
-
-	
-
 	pass
 
 
@@ -89,6 +86,10 @@ func _move_step(move_frames : int, jump_height: float) -> void:
 	position.y = _start_pos.y + jump
 	position = position.snapped(Vector3.ONE * 0.001)
 
+func set_sate(state) :
+	_state_history.append(state)
+	_position_history.append(position)
+	_rotation_history.append(rotation)
 
 func explode_animation() -> void:
 

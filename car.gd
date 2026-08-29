@@ -4,27 +4,27 @@ class_name Car
 enum PipeColor { BLUE, RED }
 @export var pipe_color: PipeColor = PipeColor.BLUE
 
-var material_blue = preload("res://frog_car/material_car_blue.tres")
-var material_red = preload("res://frog_car/material_car_red.tres")
+const material_blue = preload("res://frog_car/material_car_blue.tres")
+const material_red = preload("res://frog_car/material_car_red.tres")
 
-var _direction_sequence: Array
+const blue_sequence = [Direction.RIGHT, Direction.RIGHT, Direction.UP, Direction.RIGHT, Direction.RIGHT, Direction.DOWN]
+const red_sequence = [Direction.RIGHT]
+
+var _state_sequence: Array
 var _sequence_index := 0
 
 func _ready() -> void:
 	var mesh_node = get_node("frog/frog_paint_texture_0")
 	if pipe_color == PipeColor.BLUE :
-		_direction_sequence = [Direction.RIGHT, Direction.RIGHT, Direction.UP, Direction.RIGHT, Direction.RIGHT, Direction.DOWN]
+		_state_sequence = blue_sequence
 		mesh_node.set_surface_override_material(0, material_blue)
 	if pipe_color == PipeColor.RED :
-		_direction_sequence = [Direction.RIGHT]
+		_state_sequence = red_sequence
 		mesh_node.set_surface_override_material(0, material_red)
 
+	set_sate(_state_sequence[0])
 	next_in_sequence()
-	_direction_history.append(_direction)
-	_position_history.append(position)
-	_rotation_history.append(rotation)
-	
-	rotation.y = direction_rotations[_direction_history[0]]
+	rotation.y = direction_rotations[_state_history[0]]
 
 
 
@@ -44,10 +44,10 @@ func _physics_process(_delta: float) -> void:
 		_frame = 0
 		next_in_sequence()
 
-func next_in_sequence() :
-	_sequence_index = (_sequence_index) % _direction_sequence.size()
-	_direction = _direction_sequence[_sequence_index]
-	_direction_history.append(_direction)
-	_position_history.append(position)
-	_rotation_history.append(rotation)
+
+
+func next_in_sequence():
+	_sequence_index = (_sequence_index) % _state_sequence.size()
+	var state = _state_sequence[_sequence_index]
+	set_sate(state)
 	_sequence_index += 1
