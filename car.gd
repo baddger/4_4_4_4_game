@@ -26,8 +26,6 @@ func _ready() -> void:
 	next_in_sequence()
 	rotation.y = direction_rotations[_state_history[0]]
 
-
-
 func _physics_process(_delta: float) -> void:
 
 	# hors limite
@@ -43,7 +41,6 @@ func _physics_process(_delta: float) -> void:
 	if _frame >= move_frames:
 		_frame = 0
 		next_in_sequence()
-
 
 
 func next_in_sequence():
