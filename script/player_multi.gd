@@ -1,5 +1,5 @@
 extends Creature
-class_name Player
+class_name Player_Multi
 
 
 const input_to_state := {
@@ -8,6 +8,8 @@ const input_to_state := {
 	"ui_left": st8.LEFT,
 	"ui_right": st8.RIGHT,
 }
+
+@export var player_action: String = "ui_up"
 
 
 func _ready() -> void:
@@ -39,26 +41,18 @@ func _physics_process(_delta: float) -> void:
 
 func _read_input() -> void:
 	if get_state() == st8.NONE:
-		for action in input_to_state:
-				if Input.is_action_just_pressed(action):
-					print(position)
-					var new_state = input_to_state[action]
-					if position.x == 5 and new_state == st8.RIGHT:
-						return
-					if position.x == -5 and new_state == st8.LEFT:
-						return
-					set_state(new_state)
-
-
-					return
+		if Input.is_action_just_pressed(player_action):
+			print(position)
+			var new_state = st8.UP
+			set_state(new_state)
+			return
 	elif get_state() == st8.BACKFLIP:
 		return
 	else :
-		for action in input_to_state:
-				if Input.is_action_just_pressed(action):
-					set_state(st8.BACKFLIP)
-					_frame = 0
-					return
+		if Input.is_action_just_pressed(player_action):
+			set_state(st8.BACKFLIP)
+			_frame = 0
+			return
 
 func _die() -> void:
 	# Stop the player from reacting further and hide it

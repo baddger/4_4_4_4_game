@@ -1,59 +1,64 @@
 [gd_scene format=3 uid="uid://dmu0a1kieu4d1"]
 
 [ext_resource type="PackedScene" uid="uid://cyqp0yolag4ww" path="res://resources/strunned_stars/scene.gltf" id="1_mur5o"]
+[ext_resource type="Script" uid="uid://d0bnjx466qhgm" path="res://stun.gd" id="2_m1f3u"]
 
 [node name="Sketchfab_Scene" unique_id=1184980699 instance=ExtResource("1_mur5o")]
+script = ExtResource("2_m1f3u")
 
-[node name="MainRotator" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers" parent_id_path=PackedInt32Array(1019025725) index="0" unique_id=981325857]
-transform = Transform3D(18.901543, 0, -4.629543e-15, 0, 18.901543, 0, 4.629543e-15, 0, 18.901543, 0, 6.1506352, 0)
+[node name="Sketchfab_model" parent="." index="0" unique_id=89295713]
+transform = Transform3D(0.03, 0, 0, 0, -1.3113416e-09, 0.03, 0, -0.03, -1.3113416e-09, 0, 0, 0)
 
-[node name="Star1" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="0" unique_id=1961736629]
-transform = Transform3D(0.052903764, -0.00031269353, -0.00033293918, 0.0003126873, 0.052904814, -1.9678346e-06, 0.000332945, 1.9246995e-13, 0.052904688, 0.55961937, -0.034617364, -0.28913918)
+[node name="MainRotator" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers" parent_id_path=PackedInt32Array(1366678471) index="0" unique_id=466259832]
+transform = Transform3D(18.901543, 0, 0.0010052581, 0, 18.901543, 0, -0.0010052581, 0, 18.901543, 0, 6.1506352, 0)
 
-[node name="Star2" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="1" unique_id=1338163492]
-transform = Transform3D(0.052905727, 3.846696e-12, -2.7818347e-05, 1.8355364e-19, 0.05290574, 7.315758e-09, 2.7818345e-05, -7.3157573e-09, 0.05290573, -0.050304018, 0.14346218, -0.6584287)
+[node name="Star1" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="0" unique_id=596072895]
+transform = Transform3D(0.052905735, 0, 0, 0, 0.05290574, 0, 0, 0, 0.052905735, 0.55961937, -0.034610868, -0.28913918)
 
-[node name="star3" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="2" unique_id=626229605]
-transform = Transform3D(0.05290447, 0.00032631762, 0.00016514176, -0.00032631608, 0.052904725, -1.0185985e-06, -0.0001651449, 9.6234964e-14, 0.052905478, -0.60066456, -0.12646833, -0.3344069)
+[node name="Star2" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="1" unique_id=1802411072]
+transform = Transform3D(0.052905735, 0, 0, 0, 0.05290574, 0, 0, 0, 0.05290574, -0.050304018, 0.14345187, -0.6584287)
 
-[node name="star4" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="3" unique_id=2107150947]
-transform = Transform3D(0.05290047, -0.0005840575, 0.00046467592, 0.000584035, 0.052902512, 5.130143e-06, -0.00046470427, 0, 0.052903693, -0.5482493, 0.18299104, 0.3374618)
+[node name="star3" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="2" unique_id=2030697019]
+transform = Transform3D(0.052905735, 0, 0, 0, 0.05290573, 0, 0, 0, 0.052905735, -0.60066456, -0.12645993, -0.3344069)
 
-[node name="star5" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="4" unique_id=1100603174]
-transform = Transform3D(0.05286758, -0.0019251499, -0.00057401904, 0.0019224857, 0.05287018, -0.0002541136, 0.00058288017, 0.0002330717, 0.052902002, -0.00027123868, -0.0800651, 0.65910107)
+[node name="star4" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="3" unique_id=1394648081]
+transform = Transform3D(0.052905735, 0, 0, 0, 0.052905735, 0, 0, 0, 0.052905735, -0.5482493, 0.18297789, 0.3374618)
 
-[node name="star6" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="5" unique_id=1830199831]
-transform = Transform3D(0.052905723, 1.645985e-05, -2.353348e-05, -1.6459846e-05, 0.052905735, 7.3216544e-09, 2.353348e-05, 0, 0.052905727, 0.5381767, 0.14775494, 0.36605194)
+[node name="star5" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="4" unique_id=317371151]
+transform = Transform3D(0.052905735, 0, 0, 0, 0.05290573, 0, 0, 0, 0.052905727, -0.00027123868, -0.08005649, 0.65910107)
 
-[node name="Skeleton3D" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13" parent_id_path=PackedInt32Array(1175298318) index="0" unique_id=954735213]
-bones/1/rotation = Quaternion(0, 0, 0, 1)
-bones/2/position = Vector3(10.57767, -0.6543218, -5.4651766)
-bones/2/rotation = Quaternion(9.331852e-06, -0.0031465963, 0.0029551685, 0.9999907)
-bones/3/position = Vector3(-0.95082355, 2.7116566, -12.445319)
-bones/3/rotation = Quaternion(-5.9604638e-08, -0.00026290116, 1.1175869e-08, 1)
-bones/4/position = Vector3(-11.353487, -2.390447, -6.320807)
-bones/4/rotation = Quaternion(4.8032966e-06, 0.0015607404, -0.0030839732, 0.9999941)
-bones/5/position = Vector3(-10.362758, 3.458813, 6.3785486)
-bones/5/rotation = Quaternion(-2.4229284e-05, 0.0043918113, 0.005519829, 0.9999752)
-bones/6/position = Vector3(-0.005126826, -1.5133542, 12.458028)
-bones/6/rotation = Quaternion(0.0023025572, -0.0054678097, 0.018184911, 0.9998171)
-bones/7/position = Vector3(10.172371, 2.7927961, 6.9189467)
-bones/7/rotation = Quaternion(-4.0978193e-08, -0.00022240728, -0.00015557092, 1)
+[node name="star6" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Controllers/MainRotator" index="5" unique_id=525134545]
+transform = Transform3D(0.05290573, 0, 0, 0, 0.052905735, 0, 0, 0, 0.05290573, 0.5381767, 0.14774317, 0.36605194)
 
-[node name="Star1_01" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="0" unique_id=359384582]
-transform = Transform3D(0.9999627, -0.0059103398, -0.0062930784, 0.0059102233, 0.9999825, -3.7260976e-05, 0.0062931883, 6.608751e-08, 0.99998015, 10.577669, 5.4963136, -5.465176)
+[node name="Skeleton3D" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13" parent_id_path=PackedInt32Array(1898250916) index="0" unique_id=453391070]
+bones/1/rotation = Quaternion(0, 2.6583672e-05, 0, 1)
+bones/2/position = Vector3(10.57767, -0.6541991, -5.4651766)
+bones/2/rotation = Quaternion(0, 0, 0, 1)
+bones/3/position = Vector3(-0.95082355, 2.7114615, -12.445319)
+bones/3/rotation = Quaternion(0, 0, 0, 1)
+bones/4/position = Vector3(-11.353487, -2.390288, -6.320807)
+bones/4/rotation = Quaternion(0, 0, 0, 1)
+bones/5/position = Vector3(-10.362758, 3.4585643, 6.3785486)
+bones/5/rotation = Quaternion(0, 0, 0, 1)
+bones/6/position = Vector3(-0.0051268297, -1.513191, 12.458028)
+bones/6/rotation = Quaternion(0, 0, 0, 1)
+bones/7/position = Vector3(10.172371, 2.7925737, 6.9189467)
+bones/7/rotation = Quaternion(0, 0, 0, 1)
 
-[node name="star2_02" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="1" unique_id=1673934314]
-transform = Transform3D(0.9999998, -2.2320394e-08, -0.00052580214, 2.2383077e-08, 1, 1.1920338e-07, 0.0005258022, -1.1921513e-07, 0.99999976, -0.9508235, 8.862291, -12.445318)
+[node name="Star1_01" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="0" unique_id=1002459977]
+transform = Transform3D(0.99999994, 0, 5.316734e-05, 0, 0.99999994, 0, -5.316734e-05, 0, 0.99999994, 10.577378, 5.496436, -5.4657383)
 
-[node name="star3_03" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="2" unique_id=867399891]
-transform = Transform3D(0.99997604, 0.0061679236, 0.0031214321, -0.006167894, 0.999981, -1.9233099e-05, -0.0031214913, -2.0026162e-08, 0.99999505, -11.353486, 3.7601883, -6.3208065)
+[node name="star2_02" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="1" unique_id=394211071]
+transform = Transform3D(0.99999994, 0, 5.3167336e-05, 0, 1, 0, -5.316734e-05, 0, 0.9999999, -0.95148516, 8.862097, -12.445268)
 
-[node name="star4_04" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="3" unique_id=518056461]
-transform = Transform3D(0.9999004, -0.011039596, 0.008783136, 0.01103917, 0.9999391, 9.6941454e-05, -0.00878367, 2.6731866e-08, 0.9999614, -10.362757, 9.609448, 6.378548)
+[node name="star3_03" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="2" unique_id=438058847]
+transform = Transform3D(0.99999994, 0, 5.316734e-05, 0, 1, 0, -5.316734e-05, 0, 0.99999994, -11.353822, 3.7603471, -6.320203)
 
-[node name="star5_05" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="4" unique_id=1208436091]
-transform = Transform3D(0.9992788, -0.03638834, -0.010849874, 0.036337987, 0.999328, -0.004803135, 0.011017361, 0.0044054077, 0.99992955, -0.0051268255, 4.637281, 12.458027)
+[node name="star4_04" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="3" unique_id=443837621]
+transform = Transform3D(0.99999994, 0, 5.316734e-05, 0, 1, 0, -5.316734e-05, 0, 0.99999994, -10.362417, 9.6092, 6.379099)
 
-[node name="star6_06" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="5" unique_id=753576311]
-transform = Transform3D(0.9999998, 0.00031114178, -0.00044481448, -0.00031114178, 0.9999999, 1.5115658e-07, 0.00044481448, -1.2756173e-08, 0.9999998, 10.17237, 8.943432, 6.9189463)
+[node name="star5_05" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="4" unique_id=1930814811]
+transform = Transform3D(0.99999994, 0, 5.316734e-05, 0, 1, 0, -5.316734e-05, 0, 0.99999994, -0.004464469, 4.6374445, 12.458027)
+
+[node name="star6_06" parent="Sketchfab_model/8b3b2a2ec3d642feb5084bc49b748085_fbx/Object_2/RootNode/Polygons_Bones_DoNotTouch/Object_13/Skeleton3D" index="5" unique_id=909901383]
+transform = Transform3D(0.99999994, 0, 5.316734e-05, 0, 0.99999994, 0, -5.316734e-05, 0, 0.99999994, 10.172738, 8.943209, 6.9184055)

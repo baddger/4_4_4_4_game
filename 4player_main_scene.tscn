@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bwrrpkna3twtk"]
 
 [ext_resource type="Script" uid="uid://vclctq1eg1rc" path="res://script/camera_zqsd_and_mouse.gd" id="1_wpnhf"]
-[ext_resource type="Script" uid="uid://d3i61qixjh2fm" path="res://script/player.gd" id="2_5ihfi"]
+[ext_resource type="Script" uid="uid://bn2m7la2hgu0v" path="res://script/player_multi.gd" id="2_wpnhf"]
+[ext_resource type="PackedScene" uid="uid://dmu0a1kieu4d1" path="res://stun.tscn" id="3_f5ceb"]
 [ext_resource type="PackedScene" uid="uid://booiku28rf0gp" path="res://player.tscn" id="3_l7d3t"]
 [ext_resource type="PackedScene" uid="uid://mkkbq2v0brwb" path="res://hippo.tscn" id="4_f5ceb"]
 [ext_resource type="PackedScene" uid="uid://dpi3jd1l3l8tq" path="res://corgi.tscn" id="5_ywtxl"]
@@ -9,7 +10,7 @@
 [ext_resource type="Script" uid="uid://vf6nfeax82ya" path="res://script/pipe.gd" id="7_kgm0m"]
 [ext_resource type="PackedScene" uid="uid://d4c8nbt7duoj6" path="res://pipe.tscn" id="8_76e4d"]
 [ext_resource type="PackedScene" uid="uid://dmitvlbfay30f" path="res://ground.tscn" id="9_upkyj"]
-[ext_resource type="PackedScene" uid="uid://cyqp0yolag4ww" path="res://resources/strunned_stars/scene.gltf" id="10_yuq66"]
+[ext_resource type="PackedScene" uid="uid://tj7svsor7qpy" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/effects/area/my_area.tscn" id="11_5ihfi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lgns8"]
 
@@ -28,15 +29,58 @@ fov = 60.0
 size = 11.0
 script = ExtResource("1_wpnhf")
 
+[node name="warp_to_death" type="Node3D" parent="Camera3D" unique_id=639265171]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, -2.2063518, -15.821515)
+
+[node name="Node3D4" type="Area3D" parent="Camera3D/warp_to_death" unique_id=1521592262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+
+[node name="VFXEvilArea_01" parent="Camera3D/warp_to_death/Node3D4" unique_id=2051888884 instance=ExtResource("11_5ihfi")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Camera3D/warp_to_death/Node3D4" unique_id=1985572359]
+shape = SubResource("SphereShape3D_lgns8")
+
+[node name="Node3D3" type="Area3D" parent="Camera3D/warp_to_death" unique_id=493194877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+
+[node name="VFXEvilArea_01" parent="Camera3D/warp_to_death/Node3D3" unique_id=1070059215 instance=ExtResource("11_5ihfi")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Camera3D/warp_to_death/Node3D3" unique_id=2058968483]
+shape = SubResource("SphereShape3D_lgns8")
+
+[node name="Node3D2" type="Area3D" parent="Camera3D/warp_to_death" unique_id=701407535]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+
+[node name="VFXEvilArea_01" parent="Camera3D/warp_to_death/Node3D2" unique_id=384803661 instance=ExtResource("11_5ihfi")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Camera3D/warp_to_death/Node3D2" unique_id=662679605]
+shape = SubResource("SphereShape3D_lgns8")
+
+[node name="Node3D" type="Area3D" parent="Camera3D/warp_to_death" unique_id=620156602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+
+[node name="VFXEvilArea_01" parent="Camera3D/warp_to_death/Node3D" unique_id=394797287 instance=ExtResource("11_5ihfi")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Camera3D/warp_to_death/Node3D" unique_id=1805477462]
+shape = SubResource("SphereShape3D_lgns8")
+
 [node name="hard" type="DirectionalLight3D" parent="Camera3D" unique_id=631014788]
 transform = Transform3D(0.6561759, -0.2695937, -0.70480657, 0.7383771, 0.42206082, 0.5259887, 0.15566796, -0.8655542, 0.47600797, -9.547216, 4.337541, -3.1974096)
 light_energy = 0.922
 shadow_enabled = true
 shadow_bias = 3.78
 
+[node name="Sketchfab_Scene" parent="Camera3D" unique_id=1184980699 instance=ExtResource("3_f5ceb")]
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 2.5043032, -4.1431813, -14.703287)
+
 [node name="player" type="Area3D" parent="." unique_id=2042931486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.397, 0)
-script = ExtResource("2_5ihfi")
+script = ExtResource("2_wpnhf")
+player_action = "ui_left"
 
 [node name="Sketchfab_Scene" parent="player" unique_id=101087472 instance=ExtResource("3_l7d3t")]
 
@@ -46,7 +90,8 @@ shape = SubResource("SphereShape3D_lgns8")
 
 [node name="player2" type="Area3D" parent="." unique_id=803979057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.397, 0)
-script = ExtResource("2_5ihfi")
+script = ExtResource("2_wpnhf")
+player_action = "ui_down"
 
 [node name="Hippo2" parent="player2" unique_id=195731913 instance=ExtResource("4_f5ceb")]
 
@@ -56,7 +101,8 @@ shape = SubResource("SphereShape3D_lgns8")
 
 [node name="player3" type="Area3D" parent="." unique_id=1702255531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.397, 0)
-script = ExtResource("2_5ihfi")
+script = ExtResource("2_wpnhf")
+player_action = "ui_right"
 
 [node name="Corgi2" parent="player3" unique_id=709211051 instance=ExtResource("5_ywtxl")]
 
@@ -66,7 +112,7 @@ shape = SubResource("SphereShape3D_lgns8")
 
 [node name="player4" type="Area3D" parent="." unique_id=993272038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.397, 0)
-script = ExtResource("2_5ihfi")
+script = ExtResource("2_wpnhf")
 
 [node name="Platypus2" parent="player4" unique_id=875494799 instance=ExtResource("6_8ve4p")]
 
@@ -108,6 +154,3 @@ script = ExtResource("7_kgm0m")
 
 [node name="ground_bis" parent="." unique_id=1547835013 instance=ExtResource("9_upkyj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -44)
-
-[node name="Sketchfab_Scene" parent="." unique_id=1184980699 instance=ExtResource("10_yuq66")]
-transform = Transform3D(0.9938901, 0, -0.11037413, 0, 1, 0, 0.11037413, 0, 0.9938901, -1.6529018, 0, 1.2384815)
