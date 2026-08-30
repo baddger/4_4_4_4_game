@@ -1,6 +1,7 @@
 extends Creature
 class_name Player_Multi
 
+var stun := false
 
 const input_to_state := {
 	"ui_up": st8.UP,
@@ -22,9 +23,17 @@ func _ready() -> void:
 	rotation.y = direction_rotations[get_last_direction_state()]
 
 func _on_area_entered(_area: Area3D) -> void:
-	area_entered.disconnect(_on_area_entered)
-	Utilities.explode_animation(global_position)
-	_die()
+	#Utilities.explode_animation(global_position)
+	if not stun :
+		var stun_scene = load("res://stun.tscn")
+		var stun_instance = stun_scene.instantiate()
+		add_child(stun_instance)
+		stun = true
+		# Reset stun after 2 seconds
+		stun_instance.position.y += 0.8
+		await get_tree().create_timer(1.0).timeout
+		stun = false
+		stun_instance.queue_free()
 
 func _physics_process(_delta: float) -> void:
 	_read_input()
@@ -40,6 +49,8 @@ func _physics_process(_delta: float) -> void:
 			set_state(st8.NONE)
 
 func _read_input() -> void:
+	if stun :
+		return
 	if get_state() == st8.NONE:
 		if Input.is_action_just_pressed(player_action):
 			print(position)

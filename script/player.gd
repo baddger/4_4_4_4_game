@@ -1,6 +1,7 @@
 extends Creature
 class_name Player
 
+var stun := false
 
 const input_to_state := {
 	"ui_up": st8.UP,
@@ -22,6 +23,14 @@ func _ready() -> void:
 func _on_area_entered(_area: Area3D) -> void:
 	area_entered.disconnect(_on_area_entered)
 	Utilities.explode_animation(global_position)
+	# Add stun effect as child node
+	var stun_scene = load("res://stun.tscn")
+	var stun_instance = stun_scene.instantiate()
+	add_child(stun_instance)
+	stun = true
+	# Reset stun after 2 seconds
+	await get_tree().create_timer(2.0).timeout
+	stun = false
 	_die()
 
 func _physics_process(_delta: float) -> void:

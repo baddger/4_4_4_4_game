@@ -26,6 +26,11 @@ func _ready() -> void:
 	next_in_sequence()
 	rotation.y = direction_rotations[_state_history[0]]
 
+	area_entered.connect(_on_area_entered)
+
+func _on_area_entered(_area: Area3D) -> void:
+	queue_free()
+
 func _physics_process(_delta: float) -> void:
 
 	# hors limite
