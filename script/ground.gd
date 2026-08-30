@@ -3,7 +3,7 @@ extends Node3D
 ## Node to keep centered in view. Defaults to the sibling node named "player".
 @export var target_path: NodePath
 var _target: Node3D
-var _size = 22
+var _size = 44
 var _z_offset: float
 
 func _ready() -> void:
@@ -14,7 +14,7 @@ func _ready() -> void:
 
 	if _target:
 		# + 3 a cause du tilt de la camera qui fait que l'on regarde un peu plus vers l'avant
-		_z_offset =  _target.global_position.z +3
+		_z_offset =  _target.global_position.z
 	else:
 		push_warning("ground: no camera found to follow.")
 

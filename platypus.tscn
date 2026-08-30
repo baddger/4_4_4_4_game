@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cj8vpkty5qj4t"]
+
+[ext_resource type="PackedScene" uid="uid://dq53m8d01hhbr" path="res://gobkit-animal-pack/Platypus.glb" id="1_wcygh"]
+
+[node name="Platypus2" unique_id=875494799 instance=ExtResource("1_wcygh")]
+
+[node name="RootNode" parent="." index="0" unique_id=182755699]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, 0, 0, 0)
+
+[node name="Root" parent="RootNode" index="0" unique_id=1974476398]
+transform = Transform3D(0.9, 0, 0, 0, -3.059797e-08, 0.9, 0, -0.7, -3.934025e-08, 0, -121.85747, 0)

@@ -116,6 +116,9 @@ shadow_mesh = SubResource("ArrayMesh_yxiqu")
 [node name="Sketchfab_model" parent="." index="0" unique_id=1557202925]
 transform = Transform3D(-7.86805e-07, -18, 0, 18, -7.86805e-07, 0, 0, 0, 18, 0, 0.6, 0)
 
+[node name="Body2__0" parent="Sketchfab_model/Super Mario Pipe_fbx/RootNode/Super Mario Pipe Stand - Mario v3/Body2" parent_id_path=PackedInt32Array(1469132175) index="0" unique_id=1966541299]
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 3.5527137e-15, 0, 4, 4.7683716e-07, 0, -10.276218)
+
 [node name="Sketchfab_model2" type="Node3D" parent="." index="1" unique_id=983584434]
 transform = Transform3D(-7.86805e-07, 18, 0, -18, -7.86805e-07, 0, 0, 0, 18, 12, 0.6, 0)
 
@@ -137,6 +140,7 @@ surface_material_override/0 = ExtResource("3_arayy")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="Body2__0" type="MeshInstance3D" parent="Sketchfab_model2/Super Mario Pipe_fbx/RootNode/Super Mario Pipe Stand - Mario v3/Body2" index="0" unique_id=1053976482]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -3.5527137e-15, 0, 4, -4.7683716e-07, 0, -10.106148)
 mesh = SubResource("ArrayMesh_08mfy")
 surface_material_override/0 = ExtResource("3_arayy")
 

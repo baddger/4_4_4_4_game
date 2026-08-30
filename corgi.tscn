@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dpi3jd1l3l8tq"]
+
+[ext_resource type="PackedScene" uid="uid://jmnueoabckmj" path="res://gobkit-animal-pack/Corgi.glb" id="1_qn32b"]
+
+[node name="Corgi2" unique_id=709211051 instance=ExtResource("1_qn32b")]
+
+[node name="RootNode" parent="." index="0" unique_id=1054965317]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, 0, 0, 0)
+
+[node name="Root" parent="RootNode" index="0" unique_id=1931036890]
+transform = Transform3D(0.9, 0, 0, 0, -3.934025e-08, 0.9, 0, -0.9, -3.934025e-08, 0, -162.86646, 0)

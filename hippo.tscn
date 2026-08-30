@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://mkkbq2v0brwb"]
+
+[ext_resource type="PackedScene" uid="uid://bgct6w2gdsddq" path="res://gobkit-animal-pack/Hippo.glb" id="1_ndddu"]
+
+[node name="Hippo2" unique_id=195731913 instance=ExtResource("1_ndddu")]
+
+[node name="RootNode" parent="." index="0" unique_id=1447263581]
+transform = Transform3D(0.003, 0, 0, 0, 0.003, 0, 0, 0, 0.003, -0.11760545, -0.37143025, 0.0034565926)
+
+[node name="Root" parent="RootNode" index="0" unique_id=1129187598]
+transform = Transform3D(0.9, 0, 0, 0, -3.934025e-08, 0.9, 0, -0.9, -3.934025e-08, 38.00454, 0, 0)
+
+[node name="Skeleton3D" parent="RootNode/Root/Root2" parent_id_path=PackedInt32Array(1212114984) index="0" unique_id=1736787611]
+bones/5/rotation = Quaternion(7.54979e-08, 3.3001183e-15, 1, -4.371139e-08)
+bones/8/rotation = Quaternion(-7.54979e-08, 3.3001183e-15, 1, 4.371139e-08)
