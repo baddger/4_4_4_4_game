@@ -7,6 +7,7 @@ var _frame := 0
 var _state_history: Array
 var _position_history: Array
 var _rotation_history: Array
+var portal: Node3D
 
 enum st8 { NONE, UP, DOWN, LEFT, RIGHT, BACKFLIP }
 
@@ -38,13 +39,16 @@ func _move_step_back(move_frames : int, _jump_height: float) -> void:
 
 	# Gestion movement
 	var start = _position_history[-1]
+
 	var end = _position_history[-2]
+	if start == end :
+		end.z += 1
 	translation(start, end, move_frames)
 
 	# Gestion rotation
 	var prev_rotation = _rotation_history[-1].y
 #	var target_rotation = _rotation_history[-2].y
-	var target_rotation = direction_rotations[_state_history[-2]]
+	var target_rotation = direction_rotations[get_last_direction_state()]
 
 	y_rotate(prev_rotation, target_rotation, move_frames)
 
@@ -108,3 +112,16 @@ func set_state(state) :
 
 func get_state() :
 	return _state_history[-1]
+
+var effect_translation_to_death = 0.1
+func translation_to_death(start : Vector3, end: Vector3) -> void:
+	var trans = end - start
+	var new_position = start + trans * effect_translation_to_death
+	effect_translation_to_death +=0.01
+	if effect_translation_to_death > 1.0 :
+		effect_translation_to_death = 1.0
+
+	new_position = new_position.snapped(Vector3.ONE * 0.001)
+	global_position.x = new_position.x
+	global_position.z = new_position.z
+	global_position.y -= 0.01

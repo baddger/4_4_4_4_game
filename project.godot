@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="rythm_4D_ADVENTURE"
-run/main_scene="uid://bwrrpkna3twtk"
+run/main_scene="uid://ctiq56cg2od3m"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://resources/icon.svg"
 

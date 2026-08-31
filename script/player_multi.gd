@@ -23,12 +23,20 @@ func _ready() -> void:
 	rotation.y = direction_rotations[get_last_direction_state()]
 
 func _on_area_entered(_area: Area3D) -> void:
-	#Utilities.explode_animation(global_position)
+	if _area.name.contains("portal_to_death"):
+		portal = _area
+		await get_tree().create_timer(3.0).timeout
+		queue_free()
+
+	if _area is not Car :
+		return
 	if not stun :
 		var stun_scene = load("res://stun.tscn")
 		var stun_instance = stun_scene.instantiate()
 		add_child(stun_instance)
 		stun = true
+		set_state(st8.BACKFLIP)
+		_frame = 0
 		# Reset stun after 2 seconds
 		stun_instance.position.y += 0.8
 		await get_tree().create_timer(1.0).timeout
@@ -36,6 +44,11 @@ func _on_area_entered(_area: Area3D) -> void:
 		stun_instance.queue_free()
 
 func _physics_process(_delta: float) -> void:
+
+	if portal :
+		translation_to_death(global_position, portal.global_position)
+		return
+
 	_read_input()
 	if get_state() != st8.NONE:
 		var move_frames = 20

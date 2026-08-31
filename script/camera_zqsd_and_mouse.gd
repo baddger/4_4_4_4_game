@@ -12,11 +12,19 @@ extends Camera3D
 
 ## The camera only starts moving once the target is this many meters
 ## ahead of or behind its current followed position (dead zone).
-@export var dead_zone_up: float = 1
-@export var dead_zone_down: float = 0
+@export var dead_zone_up: float = 6
+@export var dead_zone_down: float = 6
+
+# VALUE FOR ONE PLAYER
+#@export var dead_zone_up: float = 1
+#@export var dead_zone_down: float = 0
+const pipe_scene = preload("res://pipe_2.tscn")
+
+
 
 var _target: Node3D
 var _z_offset: float
+var _last_pipe_z: float = 0.0  # Track Z position of last spawned pipe
 
 
 func _ready() -> void:
@@ -46,3 +54,16 @@ func _physics_process(delta: float) -> void:
 		var desired_z := target_z - signf(diff) * dead_zone_up
 		var weight := 1.0 - exp(-smoothing_speed * delta)
 		global_position.z = lerp(global_position.z, desired_z, weight)
+
+	# Spawn pipe when camera moves 3 units in Z direction
+	if abs(global_position.z - _last_pipe_z) >= 3.0:
+		_spawn_pipe()
+		_last_pipe_z = global_position.z
+
+
+func _spawn_pipe() -> void:
+	"""Instantiate a pipe 10 meters ahead of the camera."""
+	var pipe = pipe_scene.instantiate()
+	pipe.global_position.z = global_position.z - 30.0
+	pipe.position.x -= 6.0
+	get_parent().add_child(pipe)

@@ -29,9 +29,18 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 
 func _on_area_entered(_area: Area3D) -> void:
-	queue_free()
+	if _area.name.contains("portal_to_death"):
+		portal = _area
+		await get_tree().create_timer(3.0).timeout
+		queue_free()
+
+
 
 func _physics_process(_delta: float) -> void:
+
+	if portal :
+		translation_to_death(global_position, portal.global_position)
+		return
 
 	# hors limite
 	if abs(position.x) > 20 or abs(position.y) > 20:

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bixa1udfyvenj"]
+
+[ext_resource type="Script" uid="uid://vf6nfeax82ya" path="res://script/pipe.gd" id="1_1ap61"]
+[ext_resource type="PackedScene" uid="uid://d4c8nbt7duoj6" path="res://pipe.tscn" id="2_yl0ic"]
+
+[node name="pipe_red" type="Node3D" unique_id=457069034]
+script = ExtResource("1_1ap61")
+pipe_color = 1
+
+[node name="Sketchfab_Scene2" parent="." unique_id=487165268 instance=ExtResource("2_yl0ic")]
