@@ -21,16 +21,22 @@ ambient_light_energy = 1.8
 [node name="Node3D" type="Node3D" unique_id=1254261534]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=148028450]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 15, 9)
+transform = Transform3D(1, 0, 0, 0, 0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 14, 1)
 fov = 60.0
 size = 11.0
 script = ExtResource("1_6o5l3")
 
+[node name="hard" type="DirectionalLight3D" parent="Camera3D" unique_id=631014788]
+transform = Transform3D(0.6561759, -0.2695937, -0.70480657, 0.7383771, 0.42206082, 0.5259887, 0.15566796, -0.8655542, 0.47600797, -9.547216, 4.337541, -3.1974096)
+light_energy = 0.922
+shadow_enabled = true
+shadow_bias = 3.78
+
 [node name="warp_to_death" type="Node3D" parent="Camera3D" unique_id=639265171]
-transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, -2.2063518, -15.821515)
+transform = Transform3D(1, 0, 0, 0, 0.49999997, -0.86602545, 0, 0.86602545, 0.49999997, 0, -6.133974, -12.624356)
 
 [node name="portal_to_death1" type="Area3D" parent="Camera3D/warp_to_death" unique_id=1521592262]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
 
 [node name="VFXEvilArea_01" parent="Camera3D/warp_to_death/portal_to_death1" unique_id=2051888884 instance=ExtResource("2_j6i2d")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -39,7 +45,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
 [node name="portal_to_death2" type="Area3D" parent="Camera3D/warp_to_death" unique_id=493194877]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
 
 [node name="VFXEvilArea_01" parent="Camera3D/warp_to_death/portal_to_death2" unique_id=1070059215 instance=ExtResource("2_j6i2d")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -48,7 +54,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
 [node name="portal_to_death3" type="Area3D" parent="Camera3D/warp_to_death" unique_id=701407535]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
 [node name="VFXEvilArea_01" parent="Camera3D/warp_to_death/portal_to_death3" unique_id=384803661 instance=ExtResource("2_j6i2d")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -57,7 +63,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
 [node name="portal_to_death4" type="Area3D" parent="Camera3D/warp_to_death" unique_id=620156602]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="VFXEvilArea_01" parent="Camera3D/warp_to_death/portal_to_death4" unique_id=394797287 instance=ExtResource("2_j6i2d")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -65,14 +71,8 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="portal_to_death" type="CollisionShape3D" parent="Camera3D/warp_to_death/portal_to_death4" unique_id=1805477462]
 shape = SubResource("SphereShape3D_lgns8")
 
-[node name="hard" type="DirectionalLight3D" parent="Camera3D" unique_id=631014788]
-transform = Transform3D(0.6561759, -0.2695937, -0.70480657, 0.7383771, 0.42206082, 0.5259887, 0.15566796, -0.8655542, 0.47600797, -9.547216, 4.337541, -3.1974096)
-light_energy = 0.922
-shadow_enabled = true
-shadow_bias = 3.78
-
 [node name="player" type="Area3D" parent="." unique_id=2042931486]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.397, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.397, -2)
 script = ExtResource("3_brvr5")
 player_action = "ui_left"
 
@@ -83,7 +83,7 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
 [node name="player2" type="Area3D" parent="." unique_id=803979057]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.397, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.397, -2)
 script = ExtResource("3_brvr5")
 player_action = "ui_down"
 
@@ -94,7 +94,7 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
 [node name="player3" type="Area3D" parent="." unique_id=1702255531]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.397, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.397, -2)
 script = ExtResource("3_brvr5")
 player_action = "ui_right"
 
@@ -105,7 +105,7 @@ transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
 [node name="player4" type="Area3D" parent="." unique_id=993272038]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.397, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.397, -2)
 script = ExtResource("3_brvr5")
 
 [node name="Platypus2" parent="player4" unique_id=875494799 instance=ExtResource("7_2jowu")]

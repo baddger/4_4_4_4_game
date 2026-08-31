@@ -39,7 +39,7 @@ func _on_area_entered(_area: Area3D) -> void:
 		_frame = 0
 		# Reset stun after 2 seconds
 		stun_instance.position.y += 0.8
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(1.0).timeout
 		stun = false
 		stun_instance.queue_free()
 

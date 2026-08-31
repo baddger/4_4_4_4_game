@@ -14,7 +14,7 @@ func _ready() -> void:
 
 	if _target:
 		# + 3 a cause du tilt de la camera qui fait que l'on regarde un peu plus vers l'avant
-		_z_offset =  _target.global_position.z
+		_z_offset =  10
 	else:
 		push_warning("ground: no camera found to follow.")
 

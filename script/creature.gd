@@ -1,7 +1,6 @@
 extends Area3D
 class_name Creature
 
-const move_distance := 1.0
 
 var _frame := 0
 var _state_history: Array
