@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://ns87fyqh00q8"]
 
-[ext_resource type="Shader" uid="uid://4psmw6y8clvk" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/void_particles.gdshader" id="1_8q2ac"]
-[ext_resource type="Script" uid="uid://fhc6w7hebqe0" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/script/VFXDarkBallBB.gd" id="1_owski"]
-[ext_resource type="Shader" uid="uid://dpvlabsj8scdf" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/void_aura.gdshader" id="2_owski"]
-[ext_resource type="Shader" uid="uid://c2pru63227n55" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/void_ball.gdshader" id="3_cyecv"]
-[ext_resource type="Shader" uid="uid://cepdpbw285jdn" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/void_core.gdshader" id="4_gpu3n"]
-[ext_resource type="Script" uid="uid://bwmucxp58uvvt" path="res://assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd" id="6_cyecv"]
+[ext_resource type="Shader" uid="uid://cr6v2144bf4re" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/void_particles.gdshader" id="1_8q2ac"]
+[ext_resource type="Script" uid="uid://b2k81qxuq22io" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/script/VFXDarkBallBB.gd" id="1_owski"]
+[ext_resource type="Shader" uid="uid://c5g61fbkjptth" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/void_aura.gdshader" id="2_owski"]
+[ext_resource type="Shader" uid="uid://b0k54fe8j2flk" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/void_ball.gdshader" id="3_cyecv"]
+[ext_resource type="Shader" uid="uid://cyhjo14tbuhjw" path="res://assets/BinbunVFX_Vol2/DarkMagicFX/shader/void_core.gdshader" id="4_gpu3n"]
+[ext_resource type="Script" uid="uid://bf0minqmi2n7v" path="res://assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd" id="6_cyecv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_excg5"]
 seed = 3
@@ -393,6 +393,5 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 script = ExtResource("6_cyecv")
 vfx_light_energy = 4.0
-metadata/_custom_type_script = "uid://bwmucxp58uvvt"
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1252080873]

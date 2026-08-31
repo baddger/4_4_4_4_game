@@ -1,9 +1,9 @@
 extends Node3D
 
 const CAR_SCENE = preload("res://car.scn")
-const SPAWN_INTERVAL = 2.0
+var SPAWN_INTERVAL = 2.0
 
-enum PipeColor { BLUE, RED }
+enum PipeColor { RED, BLUE, GREEN, YELLOW, PURPLE, BROWN, WHITE, BLACK }
 
 @export var pipe_color: PipeColor = PipeColor.BLUE
 
@@ -11,6 +11,25 @@ var _spawn_timer = 0.0
 
 
 func _ready() -> void:
+
+
+	if pipe_color == PipeColor.RED :
+		SPAWN_INTERVAL = 2.0
+	if pipe_color == PipeColor.BLUE :
+		SPAWN_INTERVAL = 2.5
+	if pipe_color == PipeColor.GREEN :
+		SPAWN_INTERVAL = 1.5
+	if pipe_color == PipeColor.YELLOW :
+		SPAWN_INTERVAL = 2.0
+	if pipe_color == PipeColor.PURPLE :
+		SPAWN_INTERVAL = 1.0
+	if pipe_color == PipeColor.BROWN :
+		SPAWN_INTERVAL = 1.5
+	if pipe_color == PipeColor.WHITE :
+		SPAWN_INTERVAL = 1.0
+	if pipe_color == PipeColor.BLACK :
+		SPAWN_INTERVAL = 0.5
+
 
 	for car_number in range(0, 10, 1):
 		var car = spaawning()

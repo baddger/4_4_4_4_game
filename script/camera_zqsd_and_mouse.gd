@@ -24,10 +24,14 @@ const pipe_scene = preload("res://pipe_2.tscn")
 
 var _target: Node3D
 var _z_offset: float
-var _last_pipe_z: float = 0.0  # Track Z position of last spawned pipe
+var _last_pipe_z: float = -3.0  # Track Z position of last spawned pipe
+var _pipes: Array[Node3D] = []  # List to track spawned pipes
 
+var _z_offset_pipe: float
 
 func _ready() -> void:
+
+	_z_offset_pipe = global_position.z
 	if target_path.is_empty():
 		_target = get_parent().get_node_or_null("player")
 	else:
@@ -55,15 +59,34 @@ func _physics_process(delta: float) -> void:
 		var weight := 1.0 - exp(-smoothing_speed * delta)
 		global_position.z = lerp(global_position.z, desired_z, weight)
 
-	# Spawn pipe when camera moves 3 units in Z direction
-	if abs(global_position.z - _last_pipe_z) >= 3.0:
-		_spawn_pipe()
-		_last_pipe_z = global_position.z
+	# Spawn all pipes needed for every 3 units of movement
+	var pos := global_position.z - _z_offset_pipe
+	while (pos - 20) < _last_pipe_z:
+		_spawn_pipe(_last_pipe_z)
+		_last_pipe_z -= 2.0
 
 
-func _spawn_pipe() -> void:
-	"""Instantiate a pipe 10 meters ahead of the camera."""
+var cpt = 0
+func _spawn_pipe(pipe_z: float) -> void:
 	var pipe = pipe_scene.instantiate()
-	pipe.global_position.z = global_position.z - 30.0
+	# Randomly set pipe color to RED or BLUE
+	pipe.pipe_color = randi() % 8
+	pipe.pipe_color = cpt % 8
+	pipe.pipe_color = cpt % 8
+	cpt += 1
 	pipe.position.x -= 6.0
-	get_parent().add_child(pipe)
+	#var direction = randi() % 2
+	#if direction == 0:
+	#	pipe.position.x -= 6.0
+	#else:
+	#	pipe.position.x += 6.0
+	#	pipe.rotation.y = PI
+	get_parent().add_child(pipe)  # Add to scene tree first
+	# Now set global position after it's in the tree
+	pipe.global_position.z = pipe_z
+	# Add pipe to list
+	_pipes.append(pipe)
+	# Remove oldest pipe if list contains 3 or more
+	if _pipes.size() > 20:
+		var old_pipe = _pipes.pop_front()
+		old_pipe.queue_free()
