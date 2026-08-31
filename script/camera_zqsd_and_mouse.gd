@@ -71,16 +71,16 @@ func _spawn_pipe(pipe_z: float) -> void:
 	var pipe = pipe_scene.instantiate()
 	# Randomly set pipe color to RED or BLUE
 	pipe.pipe_color = randi() % 8
-	pipe.pipe_color = cpt % 8
-	pipe.pipe_color = cpt % 8
-	cpt += 1
-	pipe.position.x -= 6.0
-	#var direction = randi() % 2
-	#if direction == 0:
-	#	pipe.position.x -= 6.0
-	#else:
-	#	pipe.position.x += 6.0
-	#	pipe.rotation.y = PI
+	#pipe.pipe_color = cpt % 8
+	#pipe.pipe_color = cpt % 8
+	#cpt += 1
+	#pipe.position.x -= 6.0
+	var direction = randi() % 2
+	if direction == 0:
+		pipe.position.x -= 6.0
+	else:
+		pipe.position.x += 6.0
+		pipe.rotation.y = PI
 	get_parent().add_child(pipe)  # Add to scene tree first
 	# Now set global position after it's in the tree
 	pipe.global_position.z = pipe_z
