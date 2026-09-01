@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dpi3jd1l3l8tq" path="res://corgi.tscn" id="6_b7som"]
 [ext_resource type="PackedScene" uid="uid://cj8vpkty5qj4t" path="res://platypus.tscn" id="7_2jowu"]
 [ext_resource type="PackedScene" uid="uid://dmitvlbfay30f" path="res://ground.tscn" id="10_eb5gr"]
+[ext_resource type="Script" uid="uid://cu3wy03l4ylyl" path="res://game_master.gd" id="11_gmastr"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lgns8"]
 
@@ -121,3 +122,60 @@ environment = SubResource("Environment_1sea3")
 
 [node name="ground_bis" parent="." unique_id=1547835013 instance=ExtResource("10_eb5gr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -44)
+
+[node name="GameMaster" type="CanvasLayer" parent="." unique_id=1463181507]
+script = ExtResource("11_gmastr")
+
+[node name="TitleScreen" type="Control" parent="GameMaster" unique_id=261989955]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMaster/TitleScreen" unique_id=823816047]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -80.0
+offset_right = 300.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="GameMaster/TitleScreen/VBoxContainer" unique_id=739145989]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "WELCOME TO FROG RACER"
+horizontal_alignment = 1
+
+[node name="StartLabel" type="Label" parent="GameMaster/TitleScreen/VBoxContainer" unique_id=210423067]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Press Start to Continue"
+horizontal_alignment = 1
+
+[node name="CountdownLabel" type="Label" parent="GameMaster" unique_id=957735139]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 120
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1

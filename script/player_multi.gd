@@ -2,6 +2,7 @@ extends Creature
 class_name Player_Multi
 
 var stun := false
+var _game_started := false
 
 const input_to_state := {
 	"ui_up": st8.UP,
@@ -19,8 +20,12 @@ func _ready() -> void:
 	set_state(st8.UP)
 	set_state(st8.NONE)
 
-
 	rotation.y = direction_rotations[get_last_direction_state()]
+	
+	# Wait for the game to start before accepting input
+	var game_master = get_tree().root.get_node("Node3D/GameMaster")
+	if game_master:
+		game_master.game_started.connect(_on_game_started)
 
 func _on_area_entered(_area: Area3D) -> void:
 	if _area.name.contains("portal_to_death"):
@@ -62,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 			set_state(st8.NONE)
 
 func _read_input() -> void:
-	if stun :
+	if not _game_started or stun:
 		return
 	if get_state() == st8.NONE:
 		if Input.is_action_just_pressed(player_action):
@@ -77,6 +82,9 @@ func _read_input() -> void:
 			set_state(st8.BACKFLIP)
 			_frame = 0
 			return
+
+func _on_game_started() -> void:
+	_game_started = true
 
 func _die() -> void:
 	# Stop the player from reacting further and hide it
