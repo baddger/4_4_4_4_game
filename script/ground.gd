@@ -6,7 +6,16 @@ var _target: Node3D
 var _size = 44
 var _z_offset: float
 
+func move_label() -> void:
+	var label := get_node_or_null("Label3D")
+	if label :
+		label.global_position.z =roundi(label.global_position.z / 50.0) * 50
+		label.text = str(int(-label.global_position.z))
+
+
 func _ready() -> void:
+	move_label()
+
 	if target_path.is_empty():
 		_target = get_parent().get_node_or_null("Camera3D")
 	else:
@@ -27,5 +36,7 @@ func _physics_process(_delta: float) -> void:
 
 	if diff > _size:
 		global_position.z += _size*2
+		move_label()
 	if diff < -(_size):
 		global_position.z -= _size*2
+		move_label()

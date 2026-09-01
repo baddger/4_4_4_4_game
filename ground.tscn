@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://y15c8a0x671x" path="res://resources/texture_napking1100.jpg" id="2_vkp31"]
 [ext_resource type="Texture2D" uid="uid://67ep77u65fdc" path="res://resources/texture_napking1100g.jpg" id="3_d4pc4"]
 [ext_resource type="PackedScene" uid="uid://cir5bt5qdokfc" path="res://cone.tscn" id="4_vkp31"]
+[ext_resource type="PackedScene" uid="uid://dxafhppxqqaxr" path="res://resources/sign/sign_wood.tscn" id="5_vkp31"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uvqyy"]
 albedo_color = Color(0.3502639, 0.24521163, 0.044755116, 1)
@@ -445,3 +446,11 @@ mesh = SubResource("BoxMesh_wr18j")
 [node name="platform6" type="MeshInstance3D" parent="2/platform_group" unique_id=745454188]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11.000001, -0.5, 11)
 mesh = SubResource("BoxMesh_wr18j")
+
+[node name="Label3D" type="Label3D" parent="." unique_id=222922377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5575092, -22)
+text = "300"
+font_size = 63
+
+[node name="Sketchfab_Scene" parent="Label3D" unique_id=193048934 instance=ExtResource("5_vkp31")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.597, -0.063)

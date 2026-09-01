@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dxafhppxqqaxr"]
+
+[ext_resource type="PackedScene" uid="uid://cqmxwydmjhkt6" path="res://resources/sign/scene.gltf" id="1_rq4kc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86bka"]
+albedo_color = Color(0.39213026, 0.21835071, 0.017391613, 1)
+
+[node name="Sketchfab_Scene" unique_id=193048934 instance=ExtResource("1_rq4kc")]
+
+[node name="Object_3" parent="Sketchfab_model/9a9c92783eaf493b8ece599882a2a338_obj_cleaner_gles/Object_2" parent_id_path=PackedInt32Array(1501310099) index="0" unique_id=1826912766]
+surface_material_override/0 = SubResource("StandardMaterial3D_86bka")
