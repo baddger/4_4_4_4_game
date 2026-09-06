@@ -8,6 +8,7 @@ signal game_started
 
 @onready var title_screen: Control = $TitleScreen
 @onready var countdown_label: Label = $CountdownLabel
+@onready var win_label: Label = $WinLabel
 
 var _accepting_start_input := true
 
@@ -15,6 +16,8 @@ func _ready() -> void:
 #	get_tree().paused = true
 	title_screen.visible = true
 	countdown_label.visible = false
+	win_label.visible = false
+
 
 func _input(event: InputEvent) -> void:
 	if not _accepting_start_input:
@@ -47,3 +50,12 @@ func _run_countdown() -> void:
 	# entirely up to this point.
 	get_tree().paused = false
 	game_started.emit()
+
+func on_game_ended(last_player) -> void:
+	"""Display the winner."""
+	print("MERDE")
+	var camera = get_tree().root.get_node("Node3D/Camera3D")
+	if camera:
+		if last_player:
+			win_label.text = "PLAYER WIN: %s" % last_player.name
+			win_label.visible = true

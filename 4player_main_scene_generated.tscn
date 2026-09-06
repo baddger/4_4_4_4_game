@@ -72,46 +72,46 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="portal_to_death" type="CollisionShape3D" parent="Camera3D/warp_to_death/portal_to_death4" unique_id=1805477462]
 shape = SubResource("SphereShape3D_lgns8")
 
-[node name="player" type="Area3D" parent="." unique_id=2042931486]
+[node name="player 01" type="Area3D" parent="." unique_id=2042931486]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.397, -7)
 script = ExtResource("3_brvr5")
 player_action = "ui_left"
 
-[node name="Sketchfab_Scene" parent="player" unique_id=101087472 instance=ExtResource("4_1x28e")]
+[node name="Sketchfab_Scene" parent="player 01" unique_id=101087472 instance=ExtResource("4_1x28e")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player" unique_id=755864624]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player 01" unique_id=755864624]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
-[node name="player2" type="Area3D" parent="." unique_id=803979057]
+[node name="player 02" type="Area3D" parent="." unique_id=803979057]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.397, -7)
 script = ExtResource("3_brvr5")
 player_action = "ui_down"
 
-[node name="Hippo2" parent="player2" unique_id=195731913 instance=ExtResource("5_hq2xe")]
+[node name="Hippo2" parent="player 02" unique_id=195731913 instance=ExtResource("5_hq2xe")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player2" unique_id=964700205]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player 02" unique_id=964700205]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
-[node name="player3" type="Area3D" parent="." unique_id=1702255531]
+[node name="player 03" type="Area3D" parent="." unique_id=1702255531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.397, -7)
 script = ExtResource("3_brvr5")
 player_action = "ui_right"
 
-[node name="Corgi2" parent="player3" unique_id=709211051 instance=ExtResource("6_b7som")]
+[node name="Corgi2" parent="player 03" unique_id=709211051 instance=ExtResource("6_b7som")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player3" unique_id=1970005634]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player 03" unique_id=1970005634]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
-[node name="player4" type="Area3D" parent="." unique_id=993272038]
+[node name="player 04" type="Area3D" parent="." unique_id=993272038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.397, -7)
 script = ExtResource("3_brvr5")
 
-[node name="Platypus2" parent="player4" unique_id=875494799 instance=ExtResource("7_2jowu")]
+[node name="Platypus2" parent="player 04" unique_id=875494799 instance=ExtResource("7_2jowu")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player4" unique_id=762112931]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player 04" unique_id=762112931]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
 shape = SubResource("SphereShape3D_lgns8")
 
@@ -178,5 +178,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 120
 text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinLabel" type="Label" parent="GameMaster" unique_id=2120456330]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -100.0
+offset_right = 400.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "PLAYER WIN: "
 horizontal_alignment = 1
 vertical_alignment = 1

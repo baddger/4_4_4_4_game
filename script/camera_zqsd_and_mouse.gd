@@ -22,7 +22,6 @@ const pipe_scene = preload("res://pipe_2.tscn")
 
 var _game_started := false
 
-
 var _targets: Array[Node3D] = []  # List of all nodes with "player" in their name
 var _z_offset: float
 var _last_pipe_z: float = -9.0  # Track Z position of last spawned pipe
@@ -94,7 +93,10 @@ func _find_all_player_targets() -> void:
 func _physics_process(delta: float) -> void:
 
 	if one_left():
+
 		var target = get_last()
+		var game_master = get_tree().root.get_node("Node3D/GameMaster")
+		game_master.on_game_ended(target)
 		if target:
 			var target_pos = target.global_position
 			target_pos.y = 5
@@ -104,6 +106,7 @@ func _physics_process(delta: float) -> void:
 			var progress = clamp(_zoom_in_timer / _zoom_in_duration, 0.0, 1.0)
 			global_position = global_position.lerp(target_pos, progress)
 		return
+
 
 	# Spawn all pipes needed for every 3 units of movement
 	var pos := global_position.z - _z_offset_pipe
@@ -136,14 +139,9 @@ func _physics_process(delta: float) -> void:
 var cpt = 0
 func _spawn_pipe(pipe_z: float) -> void:
 	var pipe = pipe_scene.instantiate()
-	# Randomly set pipe color to RED or BLUE
 	pipe.pipe_color = randi() % 8
-	#pipe.pipe_color = cpt % 8
-	#pipe.pipe_color = cpt % 8
-	#cpt += 1
-	#pipe.position.x -= 6.0
 	var direction = randi() % 2
-	if direction == 0:
+	if direction :
 		pipe.position.x -= 6.0
 	else:
 		pipe.position.x += 6.0
