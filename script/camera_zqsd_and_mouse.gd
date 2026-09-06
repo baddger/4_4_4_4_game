@@ -1,8 +1,5 @@
 extends Camera3D
 
-## Node to keep centered in view. Defaults to the sibling node named "player".
-@export var target_path: NodePath
-
 ## How quickly the camera catches up to the target's Z position.
 ## Higher values feel snappier, lower values feel "heavier" (more inertia).
 ## The default converges ~95% of the distance within about 10 physics
@@ -15,9 +12,7 @@ extends Camera3D
 @export var dead_zone_up: float = 6
 @export var dead_zone_down: float = 6
 
-# VALUE FOR ONE PLAYER
-#@export var dead_zone_up: float = 1
-#@export var dead_zone_down: float = 0
+
 const pipe_scene = preload("res://pipe_2.tscn")
 
 var _game_started := false
@@ -37,12 +32,8 @@ func _on_game_started() -> void:
 func _ready() -> void:
 
 	_z_offset_pipe = global_position.z
-	if target_path.is_empty():
-		_find_all_player_targets()
-	else:
-		var target = get_node_or_null(target_path)
-		if target:
-			_targets.append(target)
+	_find_all_player_targets()
+
 
 	if _targets.size() > 0:
 		_z_offset = global_position.z - _targets[0].global_position.z
@@ -122,11 +113,8 @@ func _physics_process(delta: float) -> void:
 	var target_z := _get_min_target_z() + _z_offset
 	var diff := target_z - global_position.z
 
-	#if diff > 0 and diff > dead_zone_down:
-	#	var desired_z := target_z - signf(diff) * dead_zone_down
-	#	var weight := 1.0 - exp(-smoothing_speed * delta)
-	#	global_position.z = lerp(global_position.z, desired_z, weight)
-	if diff < 0 and diff < -dead_zone_up:
+
+	if diff < -dead_zone_up:
 		var desired_z := target_z - signf(diff) * dead_zone_up
 		var weight := 1.0 - exp(-smoothing_speed * delta)
 		global_position.z = lerp(global_position.z, desired_z, weight)
@@ -134,9 +122,6 @@ func _physics_process(delta: float) -> void:
 	global_position.z -= 0.01
 
 
-
-
-var cpt = 0
 func _spawn_pipe(pipe_z: float) -> void:
 	var pipe = pipe_scene.instantiate()
 	pipe.pipe_color = randi() % 8
@@ -146,12 +131,12 @@ func _spawn_pipe(pipe_z: float) -> void:
 	else:
 		pipe.position.x += 6.0
 		pipe.rotation.y = PI
-	get_parent().add_child(pipe)  # Add to scene tree first
+	get_parent().add_child(pipe) # Add to scene tree first
 	# Now set global position after it's in the tree
 	pipe.global_position.z = pipe_z
 	# Add pipe to list
 	_pipes.append(pipe)
-	# Remove oldest pipe if list contains 3 or more
-	if _pipes.size() > 20:
+	# Remove oldest pipe if list contains 20
+	if _pipes.size() == 20:
 		var old_pipe = _pipes.pop_front()
 		old_pipe.queue_free()
