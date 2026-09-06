@@ -29,6 +29,8 @@ var _last_pipe_z: float = -9.0  # Track Z position of last spawned pipe
 var _pipes: Array[Node3D] = []  # List to track spawned pipes
 
 var _z_offset_pipe: float
+var _zoom_in_timer: float = 0.0
+var _zoom_in_duration: float = 40.0  # 4 seconds to reach target position
 
 func _on_game_started() -> void:
 	_game_started = true
@@ -94,8 +96,13 @@ func _physics_process(delta: float) -> void:
 	if one_left():
 		var target = get_last()
 		if target:
-			var target_pos = target.global_position + Vector3(0, 3, 2)
-			global_position = target_pos
+			var target_pos = target.global_position
+			target_pos.y = 5
+			target_pos.z += 2
+			target_pos = target_pos.snapped(Vector3.ONE)
+			_zoom_in_timer += delta
+			var progress = clamp(_zoom_in_timer / _zoom_in_duration, 0.0, 1.0)
+			global_position = global_position.lerp(target_pos, progress)
 		return
 
 	# Spawn all pipes needed for every 3 units of movement

@@ -21,7 +21,7 @@ func _ready() -> void:
 	set_state(st8.NONE)
 
 	rotation.y = direction_rotations[get_last_direction_state()]
-	
+
 	# Wait for the game to start before accepting input
 	var game_master = get_tree().root.get_node("Node3D/GameMaster")
 	if game_master:
@@ -57,6 +57,10 @@ func _physics_process(_delta: float) -> void:
 	_read_input()
 	if get_state() != st8.NONE:
 		var move_frames = 20
+		var camera = get_tree().root.get_node("Node3D/Camera3D")
+		var is_last_player = camera.one_left() if camera else false
+		if is_last_player :
+			move_frames = 50
 		var jump_height = 5.0
 		if get_state() != st8.BACKFLIP :
 			_move_step(move_frames, jump_height)
@@ -67,6 +71,24 @@ func _physics_process(_delta: float) -> void:
 			set_state(st8.NONE)
 
 func _read_input() -> void:
+
+	# Check if only one player left
+	var camera = get_tree().root.get_node("Node3D/Camera3D")
+	var is_last_player = camera.one_left() if camera else false
+	if is_last_player :
+		if get_state() == st8.NONE:
+			if(get_last_direction_state() == st8.LEFT):
+				set_state(st8.RIGHT)
+			else:
+				set_state(st8.LEFT)
+			return
+		elif get_state() == st8.BACKFLIP:
+			return
+		else :
+			set_state(st8.BACKFLIP)
+			_frame = 0
+			return
+
 	if not _game_started or stun:
 		return
 	if get_state() == st8.NONE:
