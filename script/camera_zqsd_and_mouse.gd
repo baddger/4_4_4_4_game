@@ -12,22 +12,26 @@ extends Camera3D
 
 ## The camera only starts moving once the target is this many meters
 ## ahead of or behind its current followed position (dead zone).
-@export var dead_zone_up: float = 15
-@export var dead_zone_down: float = 15
+@export var dead_zone_up: float = 8
+@export var dead_zone_down: float = 8
 
 # VALUE FOR ONE PLAYER
 #@export var dead_zone_up: float = 1
 #@export var dead_zone_down: float = 0
 const pipe_scene = preload("res://pipe_2.tscn")
 
+var _game_started := false
 
 
 var _target: Node3D
 var _z_offset: float
-var _last_pipe_z: float = -4.0  # Track Z position of last spawned pipe
+var _last_pipe_z: float = -9.0  # Track Z position of last spawned pipe
 var _pipes: Array[Node3D] = []  # List to track spawned pipes
 
 var _z_offset_pipe: float
+
+func _on_game_started() -> void:
+	_game_started = true
 
 func _ready() -> void:
 
@@ -42,8 +46,21 @@ func _ready() -> void:
 	else:
 		push_warning("camera_zqsd_and_mouse: no target found to follow.")
 
+	# Wait for the game to start before accepting input
+	var game_master = get_tree().root.get_node("Node3D/GameMaster")
+	if game_master:
+		game_master.game_started.connect(_on_game_started)
 
 func _physics_process(delta: float) -> void:
+
+	# Spawn all pipes needed for every 3 units of movement
+	var pos := global_position.z - _z_offset_pipe
+	while (pos - 30) < _last_pipe_z:
+		_spawn_pipe(_last_pipe_z)
+		_last_pipe_z -= 3.0
+
+	if not _game_started :
+		return
 	if not _target:
 		return
 
@@ -54,16 +71,14 @@ func _physics_process(delta: float) -> void:
 		var desired_z := target_z - signf(diff) * dead_zone_down
 		var weight := 1.0 - exp(-smoothing_speed * delta)
 		global_position.z = lerp(global_position.z, desired_z, weight)
-	if diff < 0 and diff < -dead_zone_up:
+	elif diff < 0 and diff < -dead_zone_up:
 		var desired_z := target_z - signf(diff) * dead_zone_up
 		var weight := 1.0 - exp(-smoothing_speed * delta)
 		global_position.z = lerp(global_position.z, desired_z, weight)
 
-	# Spawn all pipes needed for every 3 units of movement
-	var pos := global_position.z - _z_offset_pipe
-	while (pos - 30) < _last_pipe_z:
-		_spawn_pipe(_last_pipe_z)
-		_last_pipe_z -= 3.0
+	global_position.z -= 0.01
+
+
 
 
 var cpt = 0
