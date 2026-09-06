@@ -53,6 +53,19 @@ func _ready() -> void:
 	if game_master:
 		game_master.game_started.connect(_on_game_started)
 
+
+func one_left() -> bool:
+	var player_count = 0
+	for target in _targets:
+		if is_instance_valid(target):
+			player_count += 1
+	return player_count == 1
+func get_last() -> Node3D:
+	for target in _targets:
+		if is_instance_valid(target):
+			return target
+	return null
+
 func _get_min_target_z() -> float:
 	"""Get the minimum Z position of all targets."""
 	if _targets.is_empty():
@@ -77,6 +90,13 @@ func _find_all_player_targets() -> void:
 			_targets.append(child)
 
 func _physics_process(delta: float) -> void:
+
+	if one_left():
+		var target = get_last()
+		if target:
+			var target_pos = target.global_position + Vector3(0, 3, 2)
+			global_position = target_pos
+		return
 
 	# Spawn all pipes needed for every 3 units of movement
 	var pos := global_position.z - _z_offset_pipe
